@@ -1,14 +1,15 @@
 package harystolho.mpd;
 
-public class Main{
+public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		MpdGUI gui = new MpdGUI();
-		
-		gui.startGUI(args);
-		
-	}
 
+		Thread thread = new Thread(new DownloadThread(gui));
+
+		thread.start();
+		gui.startGUI(args);
+	}
 
 }
