@@ -21,9 +21,11 @@ public class MpdGUI extends Application {
 	private BorderPane pane;
 	private TextArea log;
 
-	Label modpackName;
-	Label modpackModNumber;
-	Label modpackVersion;
+	private Label modpackName;
+	private Label modpackModNumber;
+	private Label modpackVersion;
+
+	private Button downloadButton;
 
 	private final int HEIGHT = 600;
 	private final int WIDTH = 900;
@@ -55,7 +57,8 @@ public class MpdGUI extends Application {
 		VBox nameBox = new VBox();
 		nameBox.setMinWidth(window.getWidth() * 0.87);
 		TextField modpackUrl = new TextField();
-		modpackUrl.setText("https://minecraft.curseforge.com/projects/");
+		modpackUrl.setFocusTraversable(false);
+		modpackUrl.setText("https://minecraft.curseforge.com/projects/invasion");
 		modpackUrl.setPromptText("Modpack url");
 
 		HBox modpackInfo = new HBox();
@@ -71,7 +74,7 @@ public class MpdGUI extends Application {
 
 		VBox rightBox = new VBox();
 		Button infoButton = new Button("Get Info");
-		Button downloadButton = new Button("Download");
+		downloadButton = new Button("Download");
 		downloadButton.setDisable(true);
 		rightBox.setSpacing(5);
 		rightBox.setAlignment(Pos.CENTER);
@@ -110,7 +113,11 @@ public class MpdGUI extends Application {
 
 	public void setInfo(String name, int mods, String version) {
 		Platform.runLater(() -> {
-			
+			modpackName.setText("Name: " + name);
+			modpackModNumber.setText("Mods: " + mods);
+			modpackVersion.setText("Version: " + version);
+
+			downloadButton.setDisable(false);
 		});
 	}
 }
