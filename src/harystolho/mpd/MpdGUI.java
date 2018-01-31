@@ -42,6 +42,10 @@ public class MpdGUI extends Application {
 
 		Scene scene = new Scene(pane);
 
+		window.setOnCloseRequest((e) -> {
+			Main.ex.shutdown();
+		});
+
 		window.setScene(scene);
 		window.show();
 		System.out.println("1: " + Thread.currentThread().getName());
@@ -85,7 +89,7 @@ public class MpdGUI extends Application {
 		});
 
 		downloadButton.setOnAction((e) -> {
-
+			DownloadThread.download("te");
 		});
 
 		HBox topBox = new HBox();
@@ -113,7 +117,7 @@ public class MpdGUI extends Application {
 
 	public void setInfo(String name, int mods, String version) {
 		Platform.runLater(() -> {
-			modpackName.setText("Name: " + name);
+			modpackName.setText("Modpack: " + name);
 			modpackModNumber.setText("Mods: " + mods);
 			modpackVersion.setText("Version: " + version);
 
