@@ -30,6 +30,8 @@ public class MpdGUI extends Application {
 	private final int HEIGHT = 600;
 	private final int WIDTH = 900;
 
+	public static String modpackID;
+
 	@Override
 	public void start(Stage window) throws Exception {
 		this.gui = this;
@@ -79,7 +81,7 @@ public class MpdGUI extends Application {
 		VBox rightBox = new VBox();
 		Button infoButton = new Button("Get Info");
 		downloadButton = new Button("Download");
-		downloadButton.setDisable(true);
+		// downloadButton.setDisable(true);
 		rightBox.setSpacing(5);
 		rightBox.setAlignment(Pos.CENTER);
 		rightBox.getChildren().addAll(infoButton, downloadButton);
@@ -89,7 +91,7 @@ public class MpdGUI extends Application {
 		});
 
 		downloadButton.setOnAction((e) -> {
-			DownloadThread.download("te");
+			DownloadThread.download(modpackUrl.getText());
 		});
 
 		HBox topBox = new HBox();
