@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 public class MpdGUI extends Application {
 
+	public static MpdGUI gui;
 	private Stage window;
 	private BorderPane pane;
 	private TextArea log;
@@ -25,6 +26,7 @@ public class MpdGUI extends Application {
 
 	@Override
 	public void start(Stage window) throws Exception {
+		this.gui = this;
 		this.window = window;
 		window.setTitle("Modpack Downloader");
 		window.setHeight(HEIGHT);
@@ -36,6 +38,7 @@ public class MpdGUI extends Application {
 
 		window.setScene(scene);
 		window.show();
+		System.out.println("1: " + Thread.currentThread().getName());
 	}
 
 	public void startGUI(String[] args) {
