@@ -21,6 +21,10 @@ public class MpdGUI extends Application {
 	private BorderPane pane;
 	private TextArea log;
 
+	Label modpackName;
+	Label modpackModNumber;
+	Label modpackVersion;
+
 	private final int HEIGHT = 600;
 	private final int WIDTH = 900;
 
@@ -51,12 +55,13 @@ public class MpdGUI extends Application {
 		VBox nameBox = new VBox();
 		nameBox.setMinWidth(window.getWidth() * 0.87);
 		TextField modpackUrl = new TextField();
+		modpackUrl.setText("https://minecraft.curseforge.com/projects/");
 		modpackUrl.setPromptText("Modpack url");
 
 		HBox modpackInfo = new HBox();
-		Label modpackName = new Label("Name:");
-		Label modpackModNumber = new Label("Mods: ");
-		Label modpackVersion = new Label("Version: ");
+		modpackName = new Label("Name:");
+		modpackModNumber = new Label("Mods: ");
+		modpackVersion = new Label("Version: ");
 		modpackModNumber.setTranslateX(window.getWidth() / 6);
 		modpackVersion.setTranslateX(window.getWidth() / 6 * 2);
 		modpackInfo.getChildren().addAll(modpackName, modpackModNumber, modpackVersion);
@@ -71,6 +76,14 @@ public class MpdGUI extends Application {
 		rightBox.setSpacing(5);
 		rightBox.setAlignment(Pos.CENTER);
 		rightBox.getChildren().addAll(infoButton, downloadButton);
+
+		infoButton.setOnAction((e) -> {
+			DownloadThread.getInfo(modpackUrl.getText());
+		});
+
+		downloadButton.setOnAction((e) -> {
+
+		});
 
 		HBox topBox = new HBox();
 		topBox.setSpacing(5);
@@ -91,7 +104,13 @@ public class MpdGUI extends Application {
 
 	public void addMessage(String msg) {
 		Platform.runLater(() -> {
-			log.appendText(msg);
+			log.appendText(msg + '\n');
+		});
+	}
+
+	public void setInfo(String name, int mods, String version) {
+		Platform.runLater(() -> {
+			
 		});
 	}
 }
