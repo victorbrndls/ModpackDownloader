@@ -22,3 +22,8 @@
 hs_err_pid*
 
 /.settings
+/.classpath
+/.gitattributes
+/.gitignore
+/.project
+/LICENSE
