@@ -1,0 +1,694 @@
+{
+  "Armor_Sets": [
+    {
+      "name": "Leather Armor Set",
+      "head": "minecraft:leather_helmet",
+      "body": "minecraft:leather_chestplate",
+      "legs": "minecraft:leather_leggings",
+      "feet": "minecraft:leather_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 20
+    },
+    {
+      "name": "Iron Armor Set",
+      "head": "minecraft:iron_helmet",
+      "body": "minecraft:iron_chestplate",
+      "legs": "minecraft:iron_leggings",
+      "feet": "minecraft:iron_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 20
+    },
+    {
+      "name": "Gold Armor Set",
+      "head": "minecraft:golden_helmet",
+      "body": "minecraft:golden_chestplate",
+      "legs": "minecraft:golden_leggings",
+      "feet": "minecraft:golden_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Diamond Armor Set",
+      "head": "minecraft:diamond_helmet",
+      "body": "minecraft:diamond_chestplate",
+      "legs": "minecraft:diamond_leggings",
+      "feet": "minecraft:diamond_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Chain Mail Armor Set",
+      "head": "minecraft:chainmail_helmet",
+      "body": "minecraft:chainmail_chestplate",
+      "legs": "minecraft:chainmail_leggings",
+      "feet": "minecraft:chainmail_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Brass Armor Set",
+      "head": "basemetals:brass_helmet",
+      "body": "basemetals:brass_chestplate",
+      "legs": "basemetals:brass_leggings",
+      "feet": "basemetals:brass_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Bronze Armor Set",
+      "head": "basemetals:bronze_helmet",
+      "body": "basemetals:bronze_chestplate",
+      "legs": "basemetals:bronze_leggings",
+      "feet": "basemetals:bronze_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Copper Armor Set",
+      "head": "basemetals:copper_helmet",
+      "body": "basemetals:copper_chestplate",
+      "legs": "basemetals:copper_leggings",
+      "feet": "basemetals:copper_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Cupronickel Armor Set",
+      "head": "basemetals:cupronickel_helmet",
+      "body": "basemetals:cupronickel_chestplate",
+      "legs": "basemetals:cupronickel_leggings",
+      "feet": "basemetals:cupronickel_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Invar Armor Set",
+      "head": "basemetals:invar_helmet",
+      "body": "basemetals:invar_chestplate",
+      "legs": "basemetals:invar_leggings",
+      "feet": "basemetals:invar_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Lead Armor Set",
+      "head": "basemetals:lead_helmet",
+      "body": "basemetals:lead_chestplate",
+      "legs": "basemetals:lead_leggings",
+      "feet": "basemetals:lead_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Mithril Armor Set",
+      "head": "basemetals:mithril_helmet",
+      "body": "basemetals:mithril_chestplate",
+      "legs": "basemetals:mithril_leggings",
+      "feet": "basemetals:mithril_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Platinum Armor Set",
+      "head": "basemetals:platinum_helmet",
+      "body": "basemetals:platinum_chestplate",
+      "legs": "basemetals:platinum_leggings",
+      "feet": "basemetals:platinum_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Nickel Armor Set",
+      "head": "basemetals:nickel_helmet",
+      "body": "basemetals:nickel_chestplate",
+      "legs": "basemetals:nickel_leggings",
+      "feet": "basemetals:nickel_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Silver Armor Set",
+      "head": "basemetals:silver_helmet",
+      "body": "basemetals:silver_chestplate",
+      "legs": "basemetals:silver_leggings",
+      "feet": "basemetals:silver_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Steel Armor Set",
+      "head": "basemetals:steel_helmet",
+      "body": "basemetals:steel_chestplate",
+      "legs": "basemetals:steel_leggings",
+      "feet": "basemetals:steel_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Tin Armor Set",
+      "head": "basemetals:tin_helmet",
+      "body": "basemetals:tin_chestplate",
+      "legs": "basemetals:tin_leggings",
+      "feet": "basemetals:tin_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 10
+    },
+    {
+      "name": "Adamantine Armor Set",
+      "head": "basemetals:adamantine_helmet",
+      "body": "basemetals:adamantine_chestplate",
+      "legs": "basemetals:adamantine_leggings",
+      "feet": "basemetals:adamantine_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": false,
+      "weight": 5
+    },
+    {
+      "name": "Onion Set",
+      "head": "kaishiweapons:catarina_helmet",
+      "body": "kaishiweapons:catarina_chestplate",
+      "legs": "kaishiweapons:catarina_leggins",
+      "feet": "kaishiweapons:catarina_boots",
+      "head_nbt": {},
+      "body_nbt": {},
+      "legs_nbt": {},
+      "feet_nbt": {},
+      "always spawn full set": true,
+      "weight": 5
+    }
+  ],
+  "MainHand/Weapon": [
+    {
+      "itemID": "minecraft:wooden_sword",
+      "nbt": {},
+      "weight": 20
+    },
+    {
+      "itemID": "minecraft:iron_sword",
+      "nbt": {},
+      "weight": 20
+    },
+    {
+      "itemID": "minecraft:golden_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "minecraft:diamond_sword",
+      "nbt": {},
+      "weight": 10
+    },
+
+    {
+      "itemID": "kaishiweapons:battleaxe_stone",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:battleaxe_iron",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:battleaxe_diamond",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:katana_iron",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:katana_diamond",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:claws_stone",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:claws_iron",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_iron",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_diamond",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_stone",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:gs_stone",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:gs_iron",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:gs_diamond",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:cactus_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:washing_pole",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:shotel_iron",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_platinum",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_aquarium",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_invar",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:shotel_wooden",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:claws_bronze",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:katana_wooden",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:spear_wooden",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "kaishiweapons:katana_lead",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:nailed_bat",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:baseball_bat",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:rusty_pipe",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:crowbar",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:machete",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:golf_club",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:katana",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:sledge_hammer",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:kitchen_knife",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:metal_bat",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:fire_axe",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:spanner",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:wrench",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:copper_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:cupronickel_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:electrum_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:invar_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:lead_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:silver_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:mithril_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:nickel_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:platinum_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:steel_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:tin_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:lead_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:adamantine_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:tin_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:brass_sword",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "basemetals:bronze_sword",
+      "nbt": {},
+      "weight": 10
+    }
+  ],
+  "OffHand": [
+    {
+      "itemID": "minecraft:feather",
+      "nbt": {},
+      "weight": 20
+    },
+    {
+      "itemID": "minecraft:map",
+      "nbt": {},
+      "weight": 20
+    },
+    {
+      "itemID": "minecraft:stick",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "minecraft:shield",
+      "nbt": {},
+      "weight": 8
+    },
+    {
+      "itemID": "littlelooter:can_chicken_soup",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_pumpkin_soup",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_dog_food",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_tomato_soup",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:soda_lemonade",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:soda_ginger_ale",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:soda_root_beer",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:soda_ginger_beer",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_spam",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_tuna",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_pineapple",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_beetroot",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:can_peaches",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:soda_creaming",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:soda_orange",
+      "nbt": {},
+      "weight": 10
+    },
+    {
+      "itemID": "littlelooter:wire_cutter",
+      "nbt": {},
+      "weight": 5
+    },
+    {
+      "itemID": "littlelooter:can_opener",
+      "nbt": {},
+      "weight": 5
+    },
+    {
+      "itemID": "littlelooter:tape",
+      "nbt": {},
+      "weight": 5
+    }
+],
+  "Tipped_Arrows_Effects": [
+    {
+      "CustomName": "Slowness",
+      "nbt": {},
+      "weight": 5,
+      "ticks": 60,
+      "TippedArrowsPotions": {
+        "potionID": "slowness"
+      }
+    },
+    {
+      "CustomName": "Harmful",
+      "nbt": {},
+      "weight": 10,
+      "ticks": 20,
+      "TippedArrowsPotions": {
+        "potionID": "instant_damage"
+      }
+    },
+    {
+      "CustomName": "Poisonous",
+      "nbt": {},
+      "weight": 10,
+      "ticks": 30,
+      "TippedArrowsPotions": [
+        {
+          "potionID": "poison"
+        },
+        {
+          "potionID": "weakness"
+        }
+      ]
+    },
+    {
+      "CustomName": "Weakness",
+      "nbt": {},
+      "weight": 25,
+      "ticks": 30,
+      "TippedArrowsPotions": {
+        "potionID": "weakness"
+      }
+    }
+  ]
+}

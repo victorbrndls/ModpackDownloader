@@ -1,0 +1,46 @@
+<VatRecipes>
+
+  <recipeGroup name="NewVatStuffs" >
+    <recipe name="Nutrient Distilation" energyCost="10000" allowMissing="true">
+      <input>
+        <itemStack modID="animalium" itemName="bear_meat" slot="0" multiplier="0.75" />
+        <itemStack modID="animalium" itemName="rat_meat" slot="0" multiplier="0.75" />
+        <itemStack modID="harvestcraft" itemName="whitemushroomItem" slot="1" multiplier="0.5" />
+        <itemStack modID="cyberware" itemName="bodyPart" itemMeta="8" slot="0" multiplier="1" />
+        <itemStack modID="cyberware" itemName="bodyPart" itemMeta="9" slot="0" multiplier="1" />
+        <itemStack modID="cyberware" itemName="bodyPart" itemMeta="10" slot="0" multiplier="1" />
+        <itemStack modID="cyberware" itemName="bodyPart" itemMeta="11" slot="0" multiplier="1" />
+        <itemStack modID="cyberware" itemName="bodyPart" slot="0" multiplier="2" />
+        <itemStack modID="Thaumcraft" itemName="ItemZombieBrain" slot="0" multiplier="2" />
+        <itemStack oreDictionary="itemSkull" slot="0" multiplier="2" />
+        <itemStack modID="minecraft" itemName="rotten_flesh" slot="0" multiplier="1.5" />
+        <itemStack modID="minecraft" itemName="chicken" slot="0" multiplier="0.75" />
+        <itemStack modID="minecraft" itemName="beef" slot="0" multiplier="0.75" />
+        <itemStack modID="minecraft" itemName="porkchop" slot="0" multiplier="0.75" />
+        <itemStack modID="minecraft" itemName="rabbit" slot="0" multiplier="0.75" />
+        <itemStack modID="minecraft" itemName="mutton" slot="0" multiplier="0.75" />
+        <itemStack modID="minecraft" itemName="sugar" slot="1" multiplier="1" />
+        <itemStack modID="minecraft" itemName="brown_mushroom" slot="1" multiplier="1.5" />
+        <itemStack modID="minecraft" itemName="red_mushroom" slot="1" multiplier="1.5" />
+        <itemStack modID="minecraft" itemName="nether_wart" slot="1" multiplier="1.5" />
+        <itemStack modID="minecraft" itemName="fermented_spider_eye" slot="1" multiplier="2" />
+        <fluidStack name="water" multiplier="0.25" />
+      </input>
+      <output>
+        <fluidStack name="nutrient_distillation" />
+      </output>
+    </recipe>
+    <recipe name="EnderDistillation" energyCost="15000" >
+      <input>
+        <itemStack modID="EnderIO" itemName="itemMaterial" number="1" itemMeta="12" slot="0" multiplier="2"/>
+        <itemStack modID="EnderIO" itemName="itemMaterial" number="1" itemMeta="13" slot="1" multiplier="2"/>
+        <fluidStack name="nutrient_distillation" multiplier="0.25" />
+      </input>
+      <output>
+        <fluidStack name="ender_distillation" />
+      </output>
+     </recipe> 
+  </recipeGroup>
+
+
+</VatRecipes>

@@ -50,7 +50,7 @@ public class MpdGUI extends Application {
 
 		window.setScene(scene);
 		window.show();
-		System.out.println("1: " + Thread.currentThread().getName());
+		DownloadThread.addInstructions();
 	}
 
 	public void startGUI(String[] args) {
@@ -99,6 +99,7 @@ public class MpdGUI extends Application {
 		topBox.getChildren().addAll(nameBox, rightBox);
 
 		log = new TextArea();
+		log.selectPositionCaret(log.lengthProperty().get());
 		log.setFocusTraversable(false);
 		log.setTranslateY(10);
 		log.setMaxWidth(window.getWidth() * 0.87);

@@ -1,0 +1,24 @@
+[
+  {
+    "fluidName": "lava",
+    "input": {
+      "name": "minecraft:redstone",
+      "meta": 0
+    },
+    "output": {
+      "name": "minecraft:netherrack",
+      "meta": 0
+      }
+    },
+    {
+    "fluidName": "lava",
+    "input": {
+      "name": "minecraft:glowstone_dust",
+      "meta": 0
+    },
+    "output": {
+      "name": "minecraft:end_stone",
+      "meta": 0
+    }
+  }
+]

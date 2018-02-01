@@ -1,0 +1,147 @@
+{
+  "items": [],
+  "blocks": [
+  ],
+  "oreDict": [
+    {
+      "oreName": "oreCoal",
+      "focusColor": "black",
+      "weight": 15
+    },
+    {
+      "oreName": "oreIron",
+      "focusColor": "white",
+      "weight": 10
+    },
+    {
+      "oreName": "oreQuartz",
+      "focusColor": "white",
+      "weight": 20
+    },
+    {
+      "oreName": "oreRedstone",
+      "focusColor": "red",
+      "weight": 20
+    },
+    {
+      "oreName": "oreLapis",
+      "focusColor": "blue",
+      "weight": 8
+    },
+    {
+      "oreName": "oreGold",
+      "focusColor": "yellow",
+      "weight": 8
+    },
+    {
+      "oreName": "oreDiamond",
+      "focusColor": "cyan",
+      "weight": 3
+    },
+    {
+      "oreName": "oreEmerald",
+      "focusColor": "lime",
+      "weight": 1
+    },
+    {
+      "oreName": "glowstone",
+      "focusColor": "yellow",
+      "weight": 20
+    },
+    {
+      "oreName": "shardLonsdaleite",
+      "focusColor": "black",
+      "weight": 8
+    },
+    {
+      "oreName": "oreCopper",
+      "focusColor": "orange",
+      "weight": 14
+    },
+    {
+      "oreName": "oreTin",
+      "focusColor": "gray",
+      "weight": 14
+    },
+    {
+      "oreName": "oreSilver",
+      "focusColor": "light_gray",
+      "weight": 14
+    },
+    {
+      "oreName": "oreLead",
+      "focusColor": "purple",
+      "weight": 17
+    },
+    {
+      "oreName": "oreAluminum",
+      "focusColor": "white",
+      "weight": 17
+    },
+    {
+      "oreName": "oreUranium",
+      "focusColor": "green",
+      "weight": 6
+    },
+    {
+      "oreName": "oreNickel",
+      "focusColor": "gray",
+      "weight": 9
+    },
+    {
+      "oreName": "orePlatinum",
+      "focusColor": "light_blue",
+      "weight": 6
+    },
+    {
+      "oreName": "oreMithril",
+      "focusColor": "light_blue",
+      "weight": 6
+    },
+    {
+      "oreName": "oreSulfur",
+      "focusColor": "yellow",
+      "weight": 10
+    },
+    {
+      "oreName": "oreNiter",
+      "focusColor": "white",
+      "weight": 10
+    },
+    {
+      "oreName": "oreSaltpeter",
+      "focusColor": "white",
+      "weight": 8
+    },
+    {
+      "oreName": "oreQuartzBlack",
+      "focusColor": "black",
+      "weight": 14
+    },
+    {
+      "oreName": "oreZinc",
+      "focusColor": "pink",
+      "weight": 9
+    },
+    {
+      "oreName": "oreIridium",
+      "focusColor": "white",
+      "weight": 6
+    },
+    {
+      "oreName": "oreTitanium",
+      "focusColor": "pink",
+      "weight": 6
+    },
+    {
+      "oreName": "oreTungsten",
+      "focusColor": "black",
+      "weight": 8
+    },
+    {
+      "oreName": "oreDilithium",
+      "focusColor": "purple",
+      "weight": 2
+    }
+  ]
+}

@@ -1,0 +1,467 @@
+<!--
+  Custom recipes that will not be over written by Ender IO are added here.
+
+  To change an existing recipe, just add the recipe to this file using the same recipe group and recipe name as found in
+  the core file.
+
+  Adding new Recipes:
+  For more details of how to add a new recipe please see the documentation at the top of SAGMillRecipes_Core.xml.
+
+  Adding a new recipe to a new group:
+
+  <recipeGroup name="CrazyPantsGroup" >
+    <recipe name="SolarToGlass" energyCost="120" >
+        <input>
+          <itemStack modID="EnderIO" itemName="enderIO:blockSolarPanel" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="glass" />
+        </output>
+      </recipe>
+  </recipeGroup>
+
+  Removing Recipes:
+  To disable all recipes within a group, in this example Forestry, include the following in this file:
+
+  <recipeGroup name="Forestry" enabled="false" />
+
+  Disable all recipes in the group 'Vanilla':
+
+  <recipeGroup name="Vanilla" enabled="false" />
+
+  To disable individual recipes, simply provide an invalid recipe for them:
+
+  <recipeGroup name="Applied Energistics" >
+    <recipe name="CertusQuartzOre" />
+  </recipeGroup>
+
+  Disable the glass recipes in the group 'Vanilla':
+
+  <recipeGroup name="Vanilla" >
+    <recipe name="Glass" />
+  </recipeGroup>
+
+  Modifying Recipes:
+  Modify a core recipe definition, in this case, make glass give diamonds:
+
+  <recipeGroup name="Vanilla" >
+    <recipe name="Glass" energyCost="120" >
+        <input>
+          <itemStack modID="minecraft" itemName="glass" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="diamond" />
+        </output>
+      </recipe>
+  </recipeGroup>
+
+  Add this block to change the default TE obsidian -> dust recipe to the railcraft recipe.
+
+  <recipeGroup name="Thermal Expansion" >
+    <recipe name="Obsidian" energyCost="400" >
+      <input>
+        <itemStack modID="minecraft" itemName="obsidian" />
+      </input>
+      <output>
+        <itemStack modID="Railcraft" itemName="tile.railcraft.cube" itemMeta="4" number="1" />
+        <itemStack oreDictionary="dustObsidian" number="1" chance="0.15" />
+        <itemStack oreDictionary="dustObsidian" number="1" chance="0.025" />
+      </output>
+    </recipe>
+  </recipeGroup>
+
+  Grinding Balls:
+  Adding a new grinding ball:
+
+  <grindingBalls>
+    <grindingBall id="Diamond" grindingMultiplier="1.5" chanceMultiplier="2" powerMultiplier="0.5" durationRF="50000" >
+      <itemStack modID="minecraft" itemName="diamond" />
+    </grindingBall>
+  </grindingBalls>
+
+  Removing an existing grinding ball:
+
+  <grindingBalls>
+    <grindingBall id="Flint" remove="true" />
+  </grindingBalls>
+
+  Modifying the excludes list: (removing glowstone, adding sand)
+
+  <grindingBalls>
+    <excludes>
+      <itemStack modID="minecraft" itemName="glowstone" remove="true" />
+      <itemStack modID="minecraft" itemName="sand" />
+    </excludes>
+  </grindingBalls>
+
+-->
+
+<SAGMillRecipes>
+
+  <recipeGroup name="LeatherArmorPulverize" >
+    <recipe name="LeatherHelmet" energyCost="10000" >
+        <input>
+          <itemStack modID="minecraft" itemName="leather_helmet" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="leather" number="2" />
+        </output>
+      </recipe>
+    <recipe name="LeatherChest" energyCost="16000" >
+        <input>
+          <itemStack modID="minecraft" itemName="leather_chestplate" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="leather" number="5" />
+        </output>
+      </recipe>
+    <recipe name="LeatherLeggins" energyCost="14000" >
+        <input>
+          <itemStack modID="minecraft" itemName="leather_leggings" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="leather" number="4" />
+        </output>
+      </recipe>
+    <recipe name="LeatherBoots" energyCost="8000" >
+        <input>
+          <itemStack modID="minecraft" itemName="leather_boots" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="leather" number="2" />
+        </output>
+      </recipe>
+  </recipeGroup>
+  <recipeGroup name="DiamondArmorPulverize" >
+    <recipe name="DiamondHelmet" energyCost="10000" >
+        <input>
+          <itemStack modID="minecraft" itemName="diamond_helmet" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="diamond" number="3" />
+        </output>
+      </recipe>
+    <recipe name="DiamondChest" energyCost="16000" >
+        <input>
+          <itemStack modID="minecraft" itemName="diamond_chestplate" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="diamond" number="6" />
+        </output>
+      </recipe>
+    <recipe name="DiamondLeggins" energyCost="14000" >
+        <input>
+          <itemStack modID="minecraft" itemName="diamond_leggings" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="diamond" number="5" />
+        </output>
+      </recipe>
+    <recipe name="DiamondBoots" energyCost="8000" >
+        <input>
+          <itemStack modID="minecraft" itemName="diamond_boots" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="diamond" number="2" />
+        </output>
+      </recipe>
+  </recipeGroup>
+  <recipeGroup name="IronArmorPulverize" >
+    <recipe name="IronHelmet" energyCost="10000" >
+        <input>
+          <itemStack modID="minecraft" itemName="iron_helmet" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="IronChest" energyCost="16000" >
+        <input>
+          <itemStack modID="minecraft" itemName="iron_chestplate" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="3"/>
+        </output>
+      </recipe>
+    <recipe name="IronLeggins" energyCost="14000" >
+        <input>
+          <itemStack modID="minecraft" itemName="iron_leggings" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="3"/>
+        </output>
+      </recipe>
+    <recipe name="IronBoots" energyCost="8000" >
+        <input>
+          <itemStack modID="minecraft" itemName="iron_boots" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="1"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+  <recipeGroup name="GoldenArmorPulverize" >
+    <recipe name="GoldenHelmet" energyCost="10000" >
+        <input>
+          <itemStack modID="minecraft" itemName="golden_helmet" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="19" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="GoldenChest" energyCost="16000" >
+        <input>
+          <itemStack modID="minecraft" itemName="golden_chestplate" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal"  itemMeta="19" number="3" />
+        </output>
+      </recipe>
+    <recipe name="GoldenLeggins" energyCost="14000" >
+        <input>
+          <itemStack modID="minecraft" itemName="golden_leggings" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal"  itemMeta="19" number="3"/>
+        </output>
+      </recipe>
+    <recipe name="GoldenBoots" energyCost="8000" >
+        <input>
+          <itemStack modID="minecraft" itemName="golden_boots" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal"  itemMeta="19" number="1"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+  <recipeGroup name="Saddle/HorseArmor" >
+    <recipe name="Saddle" energyCost="3000" >
+        <input>
+          <itemStack modID="minecraft" itemName="saddle" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="leather" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="DiamondHorseArmor" energyCost="6000" >
+        <input>
+          <itemStack modID="minecraft" itemName="diamond_horse_armor" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="diamond" number="5" />
+        </output>
+      </recipe>
+    <recipe name="IronHorseArmor" energyCost="6000" >
+        <input>
+          <itemStack modID="minecraft" itemName="iron_horse_armor" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="5"/>
+        </output>
+      </recipe>
+    <recipe name="GoldenHorseArmor" energyCost="6000" >
+        <input>
+          <itemStack modID="minecraft" itemName="golden_horse_armor" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="19" number="5"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+  <recipeGroup name="prismarine" >      
+    <recipe name="PrismarinePulverize" energyCost="2000" >
+        <input>
+          <itemStack modID="minecraft" itemName="prismarine_shard" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="prismarine_crystals" number="1"/>
+        </output>
+      </recipe>
+    <recipe name="PrismarineBlock" energyCost="3000" >
+        <input>
+          <itemStack modID="minecraft" itemName="prismarine" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="prismarine_shard" number="2"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+  <recipeGroup name="ExNihiloOreDoubling" >      
+    <recipe name="Iron" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreIron" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Gold" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreGold" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="19" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Copper" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreCopper" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="9" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Aluminum" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreAluminium" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="10" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Lead" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreLead" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="11" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Silver" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreSilver" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="12" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Nickel" energyCost="2500" >
+        <input>
+          <itemStack modID="exnihiloadscensio" itemName="itemOreNickel" itemMeta="1" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="13" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Uranium" energyCost="2500" >
+        <input>
+          <itemStack modID="immersiveengineering" itemName="ore" itemMeta="5" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="14" number="2"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+
+    <recipeGroup name="Bricks to bricks" > 
+    <recipe name="bricks" energyCost="2000" >
+        <input>
+          <itemStack modID="minecraft" itemName="brick_block" />
+        </input>
+        <output>
+          <itemStack modID="minecraft" itemName="brick" number="4"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+    <recipeGroup name="Silicon to Silicon Dust" > 
+    <recipe name="SiliconDust" energyCost="2000" >
+        <input>
+          <itemStack modID="enderio" itemName="itemMaterial" />
+        </input>
+        <output>
+          <itemStack modID="libvulpes" itemName="productdust" itemMeta="3"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+    <recipeGroup name="MaterialBreakdown" > 
+    <recipe name="DropContainer" energyCost="3500" >
+        <input>
+          <itemStack modID="littlelooter" itemName="air_drop" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="2"/>
+        </output>
+      </recipe>
+    <recipe name="Cauldron" energyCost="3500" >
+        <input>
+          <itemStack modID="minecraft" itemName="cauldron" />
+        </input>
+        <output>
+          <itemStack modID="immersiveengineering" itemName="metal" itemMeta="18" number="2"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+    <recipeGroup name="EmeraldDiamondDusts" > 
+    <recipe name="EmeraldDust" energyCost="2000" >
+        <input>
+          <itemStack modID="minecraft" itemName="diamond" />
+        </input>
+        <output>
+          <itemStack modID="actuallyadditions" itemName="itemDust" itemMeta="2"/>
+        </output>
+      </recipe>
+    <recipe name="DiamondDust" energyCost="2000" >
+        <input>
+          <itemStack modID="minecraft" itemName="emerald" />
+        </input>
+        <output>
+          <itemStack modID="actuallyadditions" itemName="itemDust" itemMeta="3"/>
+        </output>
+      </recipe>
+  </recipeGroup>
+
+
+  <grindingBalls>
+    <excludes>
+      <itemStack modID="minecraft" itemName="diamond_helmet"/>
+      <itemStack modID="minecraft" itemName="diamond_chestplate"/>
+      <itemStack modID="minecraft" itemName="diamond_leggings"/>
+      <itemStack modID="minecraft" itemName="diamond_boots"/>
+      <itemStack modID="minecraft" itemName="iron_helmet"/>
+      <itemStack modID="minecraft" itemName="iron_chestplate"/>
+      <itemStack modID="minecraft" itemName="iron_leggings"/>
+      <itemStack modID="minecraft" itemName="iron_boots"/>
+      <itemStack modID="minecraft" itemName="golden_helmet"/>
+      <itemStack modID="minecraft" itemName="golden_chestplate"/>
+      <itemStack modID="minecraft" itemName="golden_leggings"/>
+      <itemStack modID="minecraft" itemName="golden_boots"/>
+      <itemStack modID="minecraft" itemName="leather_helmet"/>
+      <itemStack modID="minecraft" itemName="leather_chestplate"/>
+      <itemStack modID="minecraft" itemName="leather_leggings"/>
+      <itemStack modID="minecraft" itemName="leather_boots"/>      
+      <itemStack modID="exnihiloadscensio" itemName="itemOreIron" itemMeta="1" />
+      <itemStack modID="exnihiloadscensio" itemName="itemOreGold" itemMeta="1" />
+      <itemStack modID="exnihiloadscensio" itemName="itemOreCopper" itemMeta="1" />
+      <itemStack modID="exnihiloadscensio" itemName="itemOreAluminium" itemMeta="1" />
+      <itemStack modID="exnihiloadscensio" itemName="itemOreLead" itemMeta="1" />
+      <itemStack modID="exnihiloadscensio" itemName="itemOreSilver" itemMeta="1" />
+      <itemStack modID="exnihiloadscensio" itemName="itemOreNickel" itemMeta="1" />
+      <itemStack modID="immersiveengineering" itemName="ore" itemMeta="5" />
+      <itemStack modID="minecraft" itemName="brick_block" />
+      <itemStack modID="enderio" itemName="itemMaterial" />
+      <itemStack modID="littlelooter" itemName="air_drop" />
+      <itemStack modID="minecraft" itemName="cauldron" />
+      <itemStack modID="minecraft" itemName="diamond" />
+      <itemStack modID="minecraft" itemName="emerald" />
+    </excludes>
+  </grindingBalls>
+
+
+  <recipeGroup name="Vanilla" >
+ <recipe name="Wheat" energyCost="1000" >
+      <input>
+        <itemStack modID="minecraft" itemName="wheat" />
+      </input>
+      <output>
+        <itemStack modID="minecraft" itemName="wheat_seeds" />
+      </output>
+    </recipe>
+  </recipeGroup>
+
+</SAGMillRecipes>

@@ -1,0 +1,26 @@
+# Dynamic Recipe Definition file
+# Any line that starts with a hash is a comment and won't be processed by Backpacks!
+# Shapeless recipe definitions use the format: input items > output item
+# Shaped recipe definitions use the format: input items > output item | pattern
+# Smelting recipe definitions use the format: smelt input > output
+# input items must be between 1 and 9 items, separated by + symbols
+# An 'item' consists of an item id, an optional item count and an optional metadata/damage value
+# if the item count is provided it must come before the item id and be followed by an 'x', e.g 4xminecraft:dirt = 4 dirt blocks
+# if the metadata/damage is provided it must come after the item id and be preceded by a ':', e.g minecraft:wool:5 = lime wool
+# The output item can be given custom data by following it with a json representation of an nbt tag
+# When used as an output '3xminecraft:wool:5 {display:{Name:"Grass"}' would create 3 lime wool named 'Grass'
+# When used as an input for a shapeless recipe 3xminecraft:wool:5 is equivalent to minecraft:wool:5 + minecraft:wool:5 + minecraft:wool:5
+# When used as an input you may use * as a metadata value to include all possible values, eg minecraft:wool:* = any color of wool
+# The pattern for a shaped recipe must be a sequence of 1, 4 or 9 numbers, each number indicates which item to put where
+# minecraft:wool:5 + minecraft:dirt:0 > 8xminecraft:wool:12 | 111121111 defines a recipe for a dirt block surrounded by lime wool outputting 8 brown wool
+# You can have empty spaces in your pattern by using 0, so the recipe for a torch would be represented as minecraft:stick:0 + minecraft:coal:0 > 4xminecraft:torch:0 | 1020
+# Any recipe can be disabled (including vanilla recipes and most recipes from other mods) by beginning a recipe definition with a ! symbol
+
+minecraft:gold_ingot:* + minecraft:ender_eye:* + minecraft:light_weighted_pressure_plate:* > backpacks16840:backpack_restorer:0 | 111121131
+
+minecraft:leather:* + minecraft:light_weighted_pressure_plate:* > backpacks16840:backpack:3 | 111101121
+
+minecraft:leather:* + minecraft:string:* > backpacks16840:backpack_pouch:0 | 112102112
+
+minecraft:diamond:* + minecraft:ender_eye:* + minecraft:obsidian:* > backpacks16840:quantum_chest:0 | 121232121
+

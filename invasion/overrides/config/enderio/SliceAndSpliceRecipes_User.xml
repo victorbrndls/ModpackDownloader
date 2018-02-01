@@ -1,0 +1,57 @@
+<SliceAndSpliceRecipes>
+ <recipeGroup name="Invasion Fixes">
+ 
+    <recipe name="ZLogic" energyCost="20000">
+      <input>
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="7" slot="0"/>
+        <itemStack modID="extrautils2" itemName="suncrystal" slot="1" />
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="7" slot="2"/>
+        <itemStack oreDictionary="itemSilicon" slot="3"/>
+        <itemStack modID="minecraft" itemName="redstone" itemMeta="0" slot="4"/>   
+        <itemStack oreDictionary="itemSilicon" slot="5"/>
+      </input>
+      <output>
+        <itemStack modID="EnderIO" itemName="itemFrankenSkull" itemMeta="1"/>
+      </output>
+    </recipe>
+    <recipe name="SkeletalContractor" energyCost="20000">
+      <input>
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="7" slot="0"/>
+        <itemStack oreDictionary="itemSkull" slot="1"/> 
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="7" slot="2"/>
+        <itemStack modID="minecraft" itemName="rotten_flesh" slot="3"/>
+        <itemStack modID="minecraft" itemName="redstone" itemMeta="0" slot="4"/>   
+        <itemStack modID="minecraft" itemName="rotten_flesh" slot="5"/>
+      </input>
+      <output>
+        <itemStack modID="EnderIO" itemName="itemFrankenSkull" itemMeta="5"/>
+      </output>
+    </recipe>
+    <recipe name="ZombieElectrode" energyCost="20000">
+      <input>
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="1" slot="0"/>
+        <itemStack modID="minecraft" itemName="pumpkin" slot="1" />
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="1" slot="2"/>
+        <itemStack modID="minecraft" itemName="rotten_flesh" slot="3"/>
+        <itemStack modID="enderio" itemName="itemBasicCapacitor" itemMeta="0" slot="4"/>   
+        <itemStack modID="minecraft" itemName="rotten_flesh" slot="5"/>
+      </input>
+      <output>
+        <itemStack modID="EnderIO" itemName="itemFrankenSkull" itemMeta="0"/>
+      </output>
+    </recipe>
+    <recipe name="EnderResonator" energyCost="20000">
+      <input>
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="7" slot="0"/>
+        <itemStack modID="environmentaltech" itemName="ender_stabilized" slot="1" />
+        <itemStack modID="EnderIO" itemName="itemAlloy" itemMeta="7" slot="2"/>
+        <itemStack oreDictionary="itemSilicon" slot="3"/>
+        <itemStack modID="enderio" itemName="itemBasicCapacitor" itemMeta="0" slot="4"/>   
+        <itemStack oreDictionary="itemSilicon" slot="5"/>
+      </input>
+      <output>
+        <itemStack modID="EnderIO" itemName="itemFrankenSkull" itemMeta="3"/>
+      </output>
+    </recipe>
+  </recipeGroup>
+</SliceAndSpliceRecipes>

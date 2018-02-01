@@ -1,0 +1,410 @@
+									§41.0.9 Changelog									
+* §6Quest fixes and editing may have a possibility of clearing your current quest progress. To fix this issue: Use the command "/hqm edit" in-game and shift-click and finished quests to resume your progress
+* Slightly increased the chance for Jetpack Spiders to spawn. In many cases, their spawn weighting was so low players would never see them
+* §6Fixed a number of broken quests
+* Many mods updated to the latest versions
+* §6Switched to the Tomb Many Graves mod (THIS MEANS YOU SHOULD NOT UPDATE IF THERE ARE GRAVES WITH YOUR STUFF OUT IN THE WORLD)
+* Reloaded the raider skin whitelist to hopefully alleviate some issues
+* §6Added the Blur mod for a better experience aesthetically
+
+------------------------------------------------------------------		
+
+									§41.0.8 Changelog
+* §6Quest fixes and editing may have a possibility of clearing your current quest progress. To fix this issue: Use the command "/hqm edit" in-game and shift-click and finished quests to resume your progress
+* For Servers: enable the "Allow Nether" option in the server properties file. If set to false, you will be unable to travel to Advanced Rocketry planets/moons
+* §6Turned down the Raider level that max health is reached to 7 instead of 8, they will have less health on average. Some raiders will still have a large amount of health rarely
+* Added Carbon Dust to the oredictionary for black dye
+* §6Another attempt to fix overlapping wand recipes. It's fixed, but I probably broke something else
+* Added in recipes for the Pressure Tanks from Advanced Rocketry
+* §6Fixed the structure spamming the console with "Skipping Entity with id Wasp"
+* Removed the Wired mod chest loot
+* §6Fixed the recipe for the Carbon Collection Cartridges to be craftable along with the: Station Light, Ore Mapper, and Beacon
+* Turns out the Mob Masher will not work due to another mod treating it as a player. I've disabled the recipes and removed it from JEI so players do not become confused
+* §6Raiders should now drop the correct loot
+* Most mods have been updated to their latest versions and this should mark a final update for the modpack
+
+------------------------------------------------------------------		
+
+									§41.0.7 Changelog
+* §6Quest fixes and editing may have a possibility of clearing your current quest progress. To fix this issue: Use the command "/hqm edit" in-game and shift-click and finished quests to resume your progress
+* Once again, sleeping is actually disabled
+* §6Fixed the recipe for the Minecolonies Building Tool
+* Forgot to add the Mob Masher recipe back, it should now be craftable
+* §6Fixed the recipe overlap with the Iron Tubing from Advanced Generators
+* Long Pointer recipe overlap is fixed			
+* §6Fixed the Drill quest rewards		
+
+------------------------------------------------------------------
+
+									§41.0.6 Changelog
+* Quest fixes and editing may have a possibility of clearing your current quest progress. To fix this issue: Use the command "/hqm edit" in-game and shift-click and finished quests to resume your progress								
+* §6Removed the wither teleport ability
+* Added the Level Up mod to allow players to use XP towards various skills
+* §6Actually fixed the MKII generators to not use dragon's breath!
+* Many existing structures have been edited to fit more naturally into the environment and a TON of new structures have been added to the worldgen
+* §6The Mob Masher now actually works! It was a conflict with the levels mod!
+* The saga of editing Voxel prices continues! ID changes caused some items to have a much, much, much lower value than I intended for them. They are now properly adjusted. Also! I fixed another exploit! /me adds a check to the wall
+* §6Changed the way Cyberware upgrades act on player death. When the player dies, Cyberware upgrades are dropped on the ground and the player respawns with no upgrades. The reason behind this was, players would permanently cause blindness or lose an arm which would end their world. Now, you won't necessarily lose your stuff as long as you run back and pick it up within 5 minutes or it SHOULD spawn in your grave, too. Yes, I know this allows you to get 2 of an upgrade, but I'd rather have that than end a world (This only affects new worlds you have to run the "/gamerule cyberware_dropCyberware true" and "/gamerule cyberware_keepCyberware false")
+* Added the "Suspended Server" mod to stop servers from continuing progress when no one is online (Server Side Only)
+* §6Cyberware HUD now shows properly
+* Sleeping is now disabled again by removing the Surge mod (this was always meant to be off so please do not send bug reports telling me you cannot sleep)
+* §6Added OreGen to the Luna Dimension
+* Edited a number of recipes to use OreDictionary for Black Dye rather than Ink Sacs only
+* §6Removed the Coal Powder to Coal Block recipe due to duplication bugs
+* Fixed the French Fries recipe to not consume the Knife
+* §6Removed the Extra Utils 2 Builder's Wand due to a HUGE duplication bug that is extremely exploitable
+* Better Builder Wands should not allow the 
+* §6Added Xnet for piping/cable options
+* Added a recipe to get Spider Eyes from Camel Spiders, found in Sand
+* §6Removed the SoulBound enchant, due to a conflict with the Levels mod, on death, Soulbound items using an Enchantment Table/Anvil would be deleted. So, You technically never had Soulbound and should be thanking me for saving your items. Also, any items currently in your world with Soulbound will not be deleted. The Bagginses mod has its own Soulbound enchant that will persist through an update, but won't let you craft any more. Iron Backpack eternity upgrades are still usable and will persist through death. The Levels mod has its own Soulbound enchant that you can buy with enough experience levels, this SHOULD work correctly
+* Glass Bottles will no longer pickup infinite amounts from a flowing source, and should not pickup from non-water sources
+* §6Added the Scannable mod. It allows the player to use a scanner to find blocks, enemies, friendly animals, etc. in the world. They are obtainable as rare loot in Drop Beacons
+* Removed extra flour items due to avoid confusion
+* §6Finally managed to remove the Advanced Rocketry plate presser recipes to avoid confusion for the player
+* Disabled instant death when drowning
+* §6Ranged Pumps now only have a 96 block radius as opposed to a 128 block radius. This should help keep the pump in control and not have to scan through a lot of non-water blocks
+* Added Ice, Packed Ice, and Snow to the Void Resource Miner lists
+* §6Added a recipe for the Progressive Automation Cobblegen using Clay Buckets
+* Digging Raiders are now pushed back to day 16, They will have diamond tools on day 24, and tnt on day 32
+* §6Removed a lot of console spam
+* Most definitely, totally removed the WTF Expedition's Recipe Guide Table this time!
+* §6A remote to call down a group of friendly raiders every 20 minutes has been placed in random loot chests in structures
+* Brute Raiders drop a serum that allows you to craft a buff item turning you into a brute temporarily
+
+------------------------------------------------------------------
+
+									§41.0.5 Changelog
+* Quest fixes and editing may have a possibility of clearing your current quest progress. To fix this issue: Use the command "/hqm edit" in-game and shift-click and finished quests to resume your progress
+* §6Added furnace recipes for Gears to be smelted back into their respective ingots
+* Increased the amount of damage turrets inflict
+* §6Added some helpful information to the Razor Wire quest
+* Increased a few quest reward items throughout the book
+* §6Increased the chance for Nether variant dungeons
+* Removed the Mob Masher and all its upgrades until I can get it working again
+* §6Laser Creepers and other mobs should now obey light levels and spawn groups much more than previous versions
+* Fixed up the Water Strainer loot tables
+* §6Death Coordinates will now be displayed in chat for all players to see
+* Due to complaints about how much ore players get back when scrapping armor, I lowered the amounts you get
+* §6Little Looter Wire Cutters should no longer be the victim of a dupe bug
+* Fixed a few typos in the Quest Book
+* §6Dark Oak Wood should now work in a Cutting Machine
+* Removed the Torch to Stick scrapping recipe
+* §6Moved the Advanced Rocketry GUI's to locations not on top of other GUI's
+* Fixed Carving Tools having overlapping recipes
+* §6MK2 and MK3 Simple Generators now use other items besides Dragon's Breath
+
+------------------------------------------------------------------
+
+									§41.0.4 Changelog
+* §6Fixed an issue on Multiplayer not allowing players to break blocks due to a "Swing Through Grass" bug
+* Fixed quest typo
+* §6Added a recipe to create Zombie Heads
+* Added recipe to allow the Frank'n'Zombie to be crafted					
+
+------------------------------------------------------------------
+
+									§41.0.3 Changelog
+* §6Raiders, Animals, Drones, and Laser Creeper mod mobs should now obey vanilla-like lighting and not spawn in your base any longer. This also marks an entire overhaul to the mob spawning system. We discovered a bug introduced to the pack before public release 1.0 that took some time for the developers to go through, identify, fix, and then make it consistent across all the mods spawning custom mobs. You should not see hordes of enemies that were in previous versions. 
+* Laser Creeper weapons now do more damage when used by the player
+* §6Ranged Pump now requires energy to run
+* Raiders health increase on difficulty increases is slightly lowered, they should have less health as the levels increase. They will also max out on health on difficulty level 6, this should cap their health off at around 70HP on average (You'll still see the occasional high health raider)
+* §6Slightly lowered the Pyromaniac spawn weighting
+* Added a recipe for a Witch Soul Vial, allowing the player to obtain the Inventory Panel
+* §6Player Drone health has been increased from 15 to 20
+* Fixed the Flight Simulator wheels to use any black dye
+* §6Added furnace recipes to convert metal plates to ingots
+* Added SAG Mill and Crusher recipes to break down Air Drops and Cauldrons into Iron Dust
+* §6Added a recipe to convert Red Sandstone to 4 Red Sand
+* Removed the easy Steel recipe
+* §6Switched out the Simple Generator quest to make the Extra Utils Furnace Gen due to the lack of cables at that point in the modpack. Simple Gens needs a cable to connect to turrets while Extra Utils Gens do not
+* Acacia and Dark Oak Logs now obey gravity rules
+* §6Fixed up the recipe for the EnderIO Soul Binder, it will now use any mob heads
+* Added a number of metal rods to the Rod Ore Dictionary lists, should now allow any type of metal rods to be used in most recipes
+* §6The Scanning Tool from MineColonies should no longer have an overwritten recipe
+* The quest requiring a holo-projector should now turn in even after selecting a structure
+* §6Lowered the total amount of many Crafting Tasks in the Quest book due to Shift-Clicking only recognizing 1 item if the crafting operation resulted in multiple outputs
+* Added a few crafting recipes to turn Quartz Blocks into Quartz using Ex Nihilo Hammers
+* §6Rice Slimeballs are once again craftable, enjoy! This is your one change that adds a little tiny bit of fun. BUT THAT'S ALL YOU GET!
+* Because of the previously mentioned change, Duct Tape now takes an act of god to craft. Yay! Fun removed!
+* §6Fixed Fruit Juice to now require a glass bottle, because how will you drink liquid if it's not in a container?!
+* Turned on Cyberware parts persisting through death
+* §6WTF Cave Expedition has been split into two separate mods: Gravity and other gameplay tweaks exist in its own mod now. The random occurance of players logging in and seeing ice and sand blocks in their bases or already generated terrain should not happen any longer. World loading should be a bit faster due to optimizations to these mods.
+* HQM has added a fix to the Soulbound death loop issue, this should not occur any longer. There's also a fix for a multiplayer server to use the correct locations for questing data
+* §6Some recipes allowing multiple types of ingots now use Aluminum
+* Removed some non CyberWare items from the air drop to allow players more opportunity for cyber parts
+* §6Disabled hardcore days, for now
+* Disabled turret camouflage to try eliminate a crash
+* §6Fixed the Japanese Style House so it doesn't spawn in and burn down immediately
+* Increased the total number of Hardened Blocks you get from a single crafting operation from 1 to 16
+* §6The server timing when mobs start appearing, gaining abilities, and difficulty increases have all been made consistent across mobs. Raiders, Animalium, and Drones run off the same timing now. This should fix issues servers were having when setting the time backwards and mobs were spawning before the correct time
+* Emerald Armor from Actually Additions has been added back to the pack, you can also upgrade it to Emeradic Armor using the Atomic Reconstructor
+* §6Increased the damage of Immersive Engineering projectile weapons
+* The Rope Bridge mod will no longer Zoom in other player's screens on servers
+* §6You can level up to 10 max levels on weapons and armor now
+* Backported NEI, CodeChickenCore, CodeChickenLib, and Translocators due to a crash when looking up recipes or uses of certain items
+
+------------------------------------------------------------------
+
+									§41.0.2 Changelog
+* §6Disabled HQM edit mode
+
+------------------------------------------------------------------
+
+									§41.0.1 Changelog									
+* §6Fixed the server issue by changing ExtraUtils2.cfg to extrautils2.cfg, Linux is very sensitive about letter casings!
+* Increased the burn time of Creeper laser blaster fire to 2 seconds and increased the attack damage from 7 to 9
+* §6Removed some disabled items in JEI and removed some more unnecessary recipes
+* Edited the one probe bauble recipe to not use diamonds
+* §6Fixed sticks recipes not showing up properly
+* Slightly increased the normal and hard mode chance for Raiders to wear armor/have weapons
+* §6You now get 2 Diamonds from the metal press Coal Coke recipe
+* Added a Diamond Dust to Emerald Dust Atomic Reconstructor recipe along with some other new item upgrades
+* §6Lowered the number of blocks Sound Filters will check from 512 to 256. This should slightly increase performance
+* Fixed the language button not showing up in the correct place on the main title screen
+* §6Fixed SAG Mill recipes not working properly
+* Created alternate Silicon recipes to make Advanced Rocketry a bit easier
+* §6Raiders should now properly spawn, meaning dogs, bears, and rats should not spawn quite as often
+* Fixed unusable Nether Quartz Dropping from certain stone blocks
+* §6Added a few new quests to help players with new mechanics
+* Another attempt at making questing mode activate automatically without the player having to go into cheat mode
+* §6Fixed the Building Tool, Builder Wands, and Spear recipe overlaps
+* Rebalanced some of the Voxel values
+* §6AIOT recipes should now be fixed and all craftable
+* Voxel item cheesing has now been stopped! No more free items! >:D
+* §6Added a recipe for the Vanilla Crafting table that's meant for any recipes or mods requiring the Vanilla table only. If you try to cheese this to get "infinite" crafting tables, you'll be surprised to find out it auto converts when interacted with. Use it only for mods needing them
+* Removed some of the nested recipes Modular Turrets use
+* §6Disabled mouse scroll item movement for the time being while another mod makes a change, this will be re-enabled when the bug is fixed
+* Gold tools should now breakdown using wire cutters
+* §6Fixed the Space Suit quest not turning in
+* Fixed the Void Ore Miner! It now actually gets ores!
+* §6Completely removed the stagger combat mechanic
+* Removed an extra Blaze Rod recipe that was not needed
+* §6Removed some uncrafting recipes due to duplication bugs
+* Added an Atomic Reconstructor recipe to turn Clay into Lapis
+* §6Edited the Shipping Bin recipe a bit
+
+------------------------------------------------------------------				
+
+									§41.0 Changelog									
+* §6Attempted to remove Bat Wings from appearing in a number of loot tables
+* Cleaned up the extra recipes for a number of items like sticks, flint and steel, and shears
+* §6JEI item hiding and cleanup
+* Edited the Sensor Card recipes for Open Modular Turrets to not include the items before it and reducing resource cost slightly
+* §6Reduced the amount of bolts received from quest rewards
+* Adding the Cauldron to the list of items that can be scrapped on the chopping block
+* §6Edited the main title screen a bit to move the buttons a bit lower
+* Slightly lowered wild animal spawn rates
+* §6Jetpack spiders now spawn 2 days earlier
+* Decreased the resistance timer from 35 to 20 seconds
+
+------------------------------------------------------------------	
+
+									§40.9.14 Changelog									
+* §6Due to me starting too many chests on fire and losing my things, chests will now NO LONGER start on fire!
+* F3 should now actually work! Wooooo
+* §6Recipes changes
+* Edited the amount of power the Simple Generators Lava uses to be more efficient
+* §6Empty Soul Vials are now returned to the player upon crafting Soul Sand
+* Gears are now only obtained through the Metal Press
+* §6Switched some emphasis onto Lapis rather than Redstone in Actually Additions to ease the burden on player's Redstone inventory
+* Smiley Cloud now has a recipe again!
+* §6Fixed the creosote bucket ore dictionary issue
+* Edited the Atomic Reconstructor to rely less on RNG
+* §6Fixed some quests not properly turning in
+* Finally remembered to add a Gunpowder recipe that's actually attainable
+* Raiders will now spawn again on days 2 and 4, this will help the player get a bit more established before getting absolutely destroyed
+
+------------------------------------------------------------------	
+
+									§40.9.13 Changelog									
+* §6On death, the player should receive another HQM book. This is not a dupe bug, it's intended since players keep losing their books
+* You should not receive an extra quest book when questing mode is active
+
+------------------------------------------------------------------	
+
+									§40.9.12 Changelog
+* §6This time I actually included the resource pack
+* Updated the Raiders mod, there's now more overlays, digging doesn't start until day 8, and they don't carry diamond tools until day 24
+* §6HQM Multiplayer should now work as intended
+* Converted air drop ingots to Immersive Engineering ingots
+* Cleaned up the custom scripts files
+
+------------------------------------------------------------------	
+
+									§40.9.11 Changelog
+* §6Added back the WTF-Expedition resource pack using a different method, one that does not cause crashes on first load
+* Removed empty bullets from Air Drops
+* §6Beds should now work day/night and give the correct message at any time
+
+------------------------------------------------------------------										
+									§40.9.10 Changelog		
+* §6Fixed Water Strainer spamming consoles with complaints
+* Edited the Raider values for digging and TNT to be a bit lower
+* §6HQM fixes for multiplayer
+* Decreased the chance that many blocks will fall due to gravity
+* §6Slightly lowered the spawn rate of dogs, Rats, and increased Piranha rates
+* TNT carrying mobs now start spawning on Day 24 instead of 16
+* §6Added more days to the No-Raider Days to mid-late game
+* Went through and removed some more console spam
+* §6Fixed an issue where the Immersive Engineering molds were not using OreDictionaried Steel
+* Edited the first quest of the pack to allow the player to choose a weapon they want to start with
+* §6Added Aluminum back to the air drop table
+* Removed Railcraft due to the inability to remove cooking iron nuggets in steel nuggets in a vanilla furnace. This is a huge game breaking mechanic that cannot be easily turned off due to the fact that certain mods need steel nuggets that don't have the ability to customize recipes. All recipes and removals of steel nuggets have been added back to the game
+* §6OreDictionared all metal rod recipes
+
+------------------------------------------------------------------	
+
+									§40.9.9 Changelog		
+* §6Torches now start your stuff on fire! Have fun!
+* Crafting tables are no longer fireproof!
+* §6Increased Raider speed a bit during the daytime
+* Reduced the number of TNT carrying Raiders
+* §6Allowed the placement of ores again, this is crucial to a quest mid game
+* Clicking on a bed during daytime no longer resets your spawn, you should be able to set your spawn location using a bed any time of the day
+* §6Revamped the spawning weights a bit
+* Fixed the Steel quest giving a reward of another mod's steel
+* §6Edited a number of quest descriptions to be a bit more clear
+
+------------------------------------------------------------------								
+
+									§40.9.8 Changelog		
+* §6Fixed the Compressed Cobblestone not breaking down into Vanilla Cobblestone
+* Removed the excess recipes to make flint
+* §6Halved the amount of bolts you can receive from crafting
+* Switched out the loot table of the Motel structure to not spawn Immersive Engineering Blueprints
+
+------------------------------------------------------------------
+
+									§40.9.7 Changelog		
+* §6Updated the WTF Expedition mod to allow bugfixes while maintaining Quark's worldgen			
+* Due to a config issue, Raider difficulty increased on day 5 instead of 8. This has been fixed and the health increase has been slightly lowered
+* §6Increased the maximum weapon levels from 7 to 8
+* Gave Raiders a number of new weapons and armor
+* §6Increased the chance for Brute Raiders to spawn
+* Went through and fixed many quests, assigned more optional rewards, and reworked a few items
+* §6Tweakers will now only spawn at night
+* Reenabled Hardcore days to take place every 20 minecraft days. Mobs will spawn regardless of light levels, have increased health, and overall more difficulty
+* §6After about 12 restarts and config changes, I have managed to now allow the Pulvus to double Ex Nihilo ore chunks!
+* Removed the Battleaxes mod due to having another set of the same weapon
+* §6Removed the Reinforced Tools mod and its library mod... BECAUSE IT CRASHED THE CLIENT WHEN THERE WAS NO INTERNET CONNECTION!
+* Added the Support tab to report bugs to the Issue Tracker when in the menu during gameplay
+
+------------------------------------------------------------------
+
+									§40.9.6 Changelog		
+* §6Halved the amount of blocks polled by Sound Filters to lower the performance requirement of the mod in many situations		
+* Edited Food recipes, mainly Smoothies, to be more consistent with the harder recipes already made for the pack (Snowballs now only stack to 4 for this recipe change)
+* §6Removed the WTF Expedition custom explosions
+* Added the majority of modded axes to the list of tools usable for the Chopping Block
+* §6The Pulvus will now double Ex Nihilo Ores
+* Removed the LevelUp mod due to its incompatibility with MineSouls and the combat system in the pack
+* §6Increased the spawn weighting of Magma Monsters
+* Slightly increased the chances that Crafting Tables will take damage
+* §6Removed the Boatiful mod due to Piranhas making it impossible to use them
+* Deleted a number of old configs
+* §6Slightly increased the chance for Digging and TNT raiders
+* Instead of flipping right/left directions from Nausea effects, the camera will now slightly tilt
+* §6OreExcavation now requires the proper tool to excavate
+* Added Ex Nihilo Ore Doubling, Rice to Sugar, and Prismarine SAG Mill recipes to EnderIO
+* §6Cleaned up the WaterStrainer LootTable config
+* Added Kaishi's Weapon Pack for more weapon options
+* §6Added Zinc to air drops
+* Fixed a number of quests and altered some rewards
+
+------------------------------------------------------------------
+
+									§40.9.5 Changelog		
+* §6Added fences to the gravity list
+* Changed a number of recipes to include cross mod recipes, such as EnderIO Capacitors needing Actually Additions Crystals
+* §6Added many new quests and fixed many missing quest names/descriptions
+* Removed Lens of the Miner from Actually Additions due to limiting the player to fewer automatic mining options
+* §6Vanilla Style ladders cannot be deployed downwards using Quark any longer. This is due to an issue with creating shafts too easily and makes the player using other methods such as ropes or a different approach
+* Player drones now do half the ranged damage and their remote can be crafted
+* §6Added Titanium to Utility Air Drops
+* Raiders will not attack any and every mob in the game like drones, piranha, etc
+* §6Raiders will now walk 15% faster than in previous versions during the daytime
+* Drones will now drop Titanium at a very low chance
+* §6Air Drop Beacons no longer can be mined/picked up
+* Diamond Armor and Tools now can be scrapped into Diamond Nuggets
+* §6Slightly lowered the large crater spawns and their size
+* Disabled some Quark features for redundancy fixes, reverting back to vanilla textures for many items. This is due to a bit of a minimalistic approach for items/functionality/etc.
+
+------------------------------------------------------------------
+
+									§40.9.4 Changelog		
+* §6I did a lot of stuff, and honestly, I can't remember much of it. This is not a Joe Walsh quote, by the way. This really happened to me											
+
+------------------------------------------------------------------
+
+									§40.9.2 Changelog									
+* §6Turned the Witch Class Raider on, it has a weight of 1 and should be rare
+* Increased the speed of Leaf Decay to stop too many leaves from falling on the player's head
+* §6Removed Chisel and Bits, it's not needed
+* The crash while crafting SHOULD be fixed
+* §6Turned down the amount of Iron since scrapping has been a pretty generous source
+* Immersive Engineering is now the primary source for OreDictionary and Base Metals in next in line. This means most ores, dusts, etc. will now come from Immersive Engineering
+* §6Slightly increased the XP you get from the Levels mod
+* Added Cyberware Parts to the new remote air drop
+
+------------------------------------------------------------------
+
+									§40.8.6 Changelog									
+* §6Turned off the Witch class Raider until a later update								
+
+------------------------------------------------------------------
+
+									§40.8.5 Changelog									
+* §6Sleeping has been disabled again
+* Lowered the number of special Raiders that can spawn
+* §6Decreased the stamina/staggering amounts to allow the player a bit more time to fight back or flee
+
+------------------------------------------------------------------
+
+									§40.4.3 Changelog									
+* §6Wasps don't start spawning until day 4+
+* Raiders spawn less often and weaker in the first few days
+* §6Recipe changes to start incorporating Immersive Engineering Plates
+* Continue to remove unnecessary items from JEI
+* §6Removed "Just Backpacks" because we don't need 3 backpacks mods >.>
+* Removed Morph-O-Tool, Electric and Power Advantage
+* §6Added more stuff to airdrops
+
+------------------------------------------------------------------
+
+									§40.4.1 Changelog
+* §6Added the option to collect hearts and increase total health to 30
+* Added a resistance timer of 1 minute when spawning in to keep players from dying right away if the world lags out a bit while loading in
+* Added the Fireaxe to now work with the survivalist chopping block
+* Slightly lowered the amount of Raiders spawning
+* Increased the amount of food the player starts out with
+* Increased the spawn rate of Dungeon Tactics Dungeons and increased their height to 15
+* Added RogueLike Dungeons to Test with and then promptly removed it since it lags out world loading >.>
+* Added Doomlike Dungeons to test
+* Removed the Clock from showing in JEI because stahp it
+
+------------------------------------------------------------------
+
+					
+**To Do**
+
+Change Recipes from Endermen Heads
+
+Disabled Nether and End
+Turn off chunkloading
+
+
+
+
+					Changelog 0.2.1
+* Finished Ore Unification Script File
+* Turned off all friendly mob spawning except bats
+* Turned off Sugar Cane generation
+* Raiders now have equipment they spawn with, and they become progressively more geared up the longer they are spawned, they now also see through walls and open doors to get to players, they will also spawn with randomized speed
+* Raiders now dig to players
+
+					Changelog 0.2.3
+* Updated mods
+* Stuff and things
+
+					Changelog 0.2.4
+* Added many of the tools to the veinminer list	

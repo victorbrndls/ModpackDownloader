@@ -1,0 +1,398 @@
+{
+  "blockLoot": [
+    {
+      "blockID": "littlelooter:air_drop",
+      "tables": [
+        "littlelooter:orbital_drop"
+      ]
+    }
+  ],
+  "lootTables": [
+    {
+      "name": "littlelooter:orbital_drop",
+      "minItems": 1,
+      "maxItems": 5,
+      "entries": [
+        {
+          "id": "minecraft:diamond",
+          "minStack": 3,
+          "maxStack": 4,
+          "meta": 0,
+          "weight": 3
+        },
+        {
+          "id": "scannable:scanner",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "minecraft:emerald",
+          "minStack": 2,
+          "maxStack": 3,
+          "meta": 0,
+          "weight": 2
+        },        
+        {
+          "id": "basemetals:zinc_ingot",
+          "minStack": 2,
+          "maxStack": 5,
+          "meta": 0,
+          "weight": 4
+        },  
+        {
+          "id": "minecraft:iron_ingot",
+          "minStack": 2,
+          "maxStack": 6,
+          "meta": 0,
+          "weight": 30
+        },
+        {
+          "id": "immersiveengineering:metal",
+          "minStack": 4,
+          "maxStack": 7,
+          "meta": 1,
+          "weight": 18
+        },
+        {
+          "id": "minecraft:gold_ingot",
+          "minStack": 2,
+          "maxStack": 6,
+          "meta": 0,
+          "weight": 19
+        },
+        {
+          "id": "immersiveengineering:metal",
+          "minStack": 2,
+          "maxStack": 5,
+          "meta": 2,
+          "weight": 24
+        },        
+        {
+          "id": "immersiveengineering:metal",
+          "minStack": 1,
+          "maxStack": 4,
+          "meta": 4,
+          "weight": 13
+        },
+        {
+          "id": "immersiveengineering:metal",
+          "minStack": 1,
+          "maxStack": 4,
+          "meta": 3,
+          "weight": 19
+        },
+        {
+          "id": "immersiveengineering:metal",
+          "minStack": 2,
+          "maxStack": 5,
+          "meta": 0,
+          "weight": 28
+        },
+        {
+          "id": "basemetals:tin_ingot",
+          "minStack": 3,
+          "maxStack": 6,
+          "meta": 0,
+          "weight": 22
+        },
+        {
+          "id": "minecraft:redstone",
+          "minStack": 4,
+          "maxStack": 8,
+          "meta": 0,
+          "weight": 19
+        },
+        {
+          "id": "minecraft:ender_pearl",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "air_support:crate_drop_remote",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "air_support:medical_crate_drop_remote",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 9
+        },
+        {
+          "id": "roughtweaks:salve",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 6
+        },
+        {
+          "id": "roughtweaks:plaster",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 4
+        },
+        {
+          "id": "roughtweaks:bandage",
+          "minStack": 1,
+          "maxStack": 3,
+          "meta": 0,
+          "weight": 4
+        },
+        {
+          "id": "minecraft:leather_boots",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 2
+        },
+        {
+          "id": "minecraft:leather_chestplate",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 2
+        },
+        {
+          "id": "minecraft:leather_leggings",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 2
+        },
+        {
+          "id": "minecraft:leather_helmet",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 2
+        },
+        {
+          "id": "minecraft:dye",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 3,
+          "weight": 8
+        },
+        {
+          "id": "minecraft:dye",
+          "minStack": 4,
+          "maxStack": 12,
+          "meta": 4,
+          "weight": 6
+        },
+        {
+          "id": "minecraft:slime_ball",
+          "minStack": 1,
+          "maxStack": 4,
+          "meta": 0,
+          "weight": 6
+        },
+        {
+          "id": "littlelooter:can_pineapple",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "littlelooter:can_baked_beans",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "littlelooter:can_peaches",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "littlelooter:sledge_hammer",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:fire_axe",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:nailed_bat",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:metal_bat",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+
+        {
+          "id": "littlelooter:golf_club",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:rusty_pipe",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:crowbar",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:night_stick",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:wrench",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:baseball_bat",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:soda_guava",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 4
+        },
+        {
+          "id": "littlelooter:can_kidney_beans",
+          "minStack": 1,
+          "maxStack": 3,
+          "meta": 0,
+          "weight": 4
+        },
+        {
+          "id": "spartanshields:shield_basic_wood",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 8
+        },
+        {
+          "id": "spartanshields:shield_basic_stone",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 6
+        },
+        {
+          "id": "literalascension:climbing_rope",
+          "minStack": 4,
+          "maxStack": 16,
+          "meta": 0,
+          "weight": 8
+        },
+        {
+          "id": "immersiveengineering:revolver",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 1
+        },
+        {
+          "id": "littlelooter:can_spam",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "littlelooter:can_baked_beans",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "littlelooter:soda_lem_lim_bit",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+      {
+          "id": "littlelooter:soda_cola",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+      {
+          "id": "littlelooter:can_dog_food",
+          "minStack": 1,
+          "maxStack": 2,
+          "meta": 0,
+          "weight": 5
+        },
+        {
+          "id": "minecraft:gunpowder",
+          "minStack": 4,
+          "maxStack": 12,
+          "meta": 0,
+          "weight": 4
+        },
+        {
+          "id": "actuallyadditions:itemMisc",
+          "minStack": 1,
+          "maxStack": 4,
+          "meta": 5,
+          "weight": 2
+        },
+        {
+          "id": "air_support:utility_crate_drop_remote",
+          "minStack": 1,
+          "maxStack": 1,
+          "meta": 0,
+          "weight": 2
+        },
+        {
+          "id": "minecraft:coal",
+          "minStack": 6,
+          "maxStack": 15,
+          "meta": 0,
+          "weight": 17
+        }
+      ]
+    }
+  ]
+}

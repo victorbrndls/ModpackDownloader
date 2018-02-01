@@ -1,0 +1,37 @@
+<OreConfig>
+    <oreGen pressure="0">
+        <ore block="minecraft:iron_ore" minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:coal_ore" minHeight="1" maxHeight="128" clumpSize="16" chancePerChunk="48" />
+        <ore block="minecraft:diamond_ore" minHeight="1" maxHeight="16" clumpSize="6" chancePerChunk="8" />
+        <ore block="minecraft:redstone_ore" minHeight="1" maxHeight="16" clumpSize="8" chancePerChunk="32" />
+        <ore block="libvulpes:ore0" meta="8" minHeight="1" maxHeight="16" clumpSize="8" chancePerChunk="16" />
+        <ore block="minecraft:crafting_table" minHeight="32" maxHeight="128" clumpSize="1" chancePerChunk="64" />
+    </oreGen>
+    <oreGen pressure="1">
+        <ore block="minecraft:iron_ore" minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:coal_ore" minHeight="1" maxHeight="128" clumpSize="16" chancePerChunk="48" />
+        <ore block="minecraft:gold_ore" minHeight="1" maxHeight="32" clumpSize="4" chancePerChunk="22" />
+        <ore block="minecraft:diamond_ore" minHeight="1" maxHeight="16" clumpSize="6" chancePerChunk="8" />
+        <ore block="minecraft:lapis_ore" minHeight="1" maxHeight="32" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:redstone_ore" minHeight="1" maxHeight="16" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:emerald_ore" minHeight="1" maxHeight="32" clumpSize="2" chancePerChunk="8" />
+        <ore block="basemetals:nickel_ore"  minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="basemetals:tin_ore"  minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:crafting_table" minHeight="32" maxHeight="128" clumpSize="1" chancePerChunk="64" />
+    </oreGen>
+    <oreGen pressure="2">
+        <ore block="minecraft:iron_ore" minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:diamond_ore" minHeight="1" maxHeight="16" clumpSize="6" chancePerChunk="8" />
+        <ore block="minecraft:redstone_ore" minHeight="1" maxHeight="16" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:crafting_table" minHeight="32" maxHeight="128" clumpSize="1" chancePerChunk="64" />
+        <ore block="basemetals:lead_ore"  minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="basemetals:silver_ore"  minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+    </oreGen>
+    <oreGen pressure="3">
+        <ore block="minecraft:iron_ore" minHeight="1" maxHeight="64" clumpSize="8" chancePerChunk="32" />
+        <ore block="minecraft:diamond_ore" minHeight="1" maxHeight="16" clumpSize="6" chancePerChunk="8" />
+        <ore block="minecraft:redstone_ore" minHeight="1" maxHeight="16" clumpSize="8" chancePerChunk="32" />
+        <ore block="libvulpes:ore0" meta="8" minHeight="1" maxHeight="16" clumpSize="8" chancePerChunk="16" />
+        <ore block="minecraft:crafting_table" minHeight="32" maxHeight="128" clumpSize="1" chancePerChunk="64" />
+    </oreGen>
+</OreConfig>

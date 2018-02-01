@@ -8,14 +8,24 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,18 +40,15 @@ public class DownloadThread implements Runnable {
 
 	@Override
 	public void run() {
-		try {
-			Thread.sleep(2000);
 
-			mpd.gui.addMessage(
-					"1 - put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname') ");
-			mpd.gui.addMessage("2 - click the 'get Info' button and wait");
-			mpd.gui.addMessage("3 - then click on the 'download' button (download folder: /currentFolder/modpackname)");
-			mpd.gui.addMessage("");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	}
 
+	public static void addInstructions() {
+		mpd.gui.addMessage(
+				"1 - put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname') ");
+		mpd.gui.addMessage("2 - click the 'get Info' button and wait");
+		mpd.gui.addMessage("3 - then click on the 'download' button (download folder: /currentFolder/modpackname)");
+		mpd.gui.addMessage("");
 	}
 
 	public static void download(String url) {
@@ -51,35 +58,122 @@ public class DownloadThread implements Runnable {
 			downloadDir.mkdir();
 
 		}
+		Thread t = new Thread(new Runnable() {
 
-		try {
+			@Override
+			public void run() {
+				try {
 
-			System.out.println("1");
-			HttpsURLConnection conn = (HttpsURLConnection) new URL(
-					"https://minecraft.curseforge.com/projects/invasion/files/2447205/download").openConnection();
+					// Download the modpack configs
+					HttpsURLConnection conn = (HttpsURLConnection) new URL(
+							"https://minecraft.curseforge.com/projects/invasion/files/2447205/download")
+									.openConnection();
 
-			InputStream fis = conn.getInputStream();
+					mpd.gui.addMessage("Starting download");
 
-			System.out.println("2");
+					Path p = Paths.get(downloadDir.getPath() + "/" + MpdGUI.modpackID + ".zip");
 
-			int len = 0;
-			byte[] b = new byte[8192];
+					try (InputStream in = conn.getInputStream()) {
+						Files.copy(in, p, StandardCopyOption.REPLACE_EXISTING);
+					}
 
-			mpd.gui.addMessage("Download Modpack");
+					// Unzip
+					ZipInputStream zis = new ZipInputStream(new FileInputStream(p.toFile()));
 
-			FileOutputStream fos = new FileOutputStream(new File(downloadDir.getPath() + "/test.zip"));
+					ZipEntry ze = zis.getNextEntry();
 
-			while ((len = fis.read()) >= 0) {
-				fos.write(b, 0, len);
+					byte[] b = new byte[1024];
+
+					while (ze != null) {
+						String fileName = ze.getName();
+						File newFile = new File(downloadDir.getPath() + "/" + fileName);
+
+						new File(newFile.getParent()).mkdir();
+
+						if (!ze.isDirectory()) {
+							newFile.createNewFile();
+						}
+
+						if (newFile.isFile()) {
+							FileOutputStream fos = new FileOutputStream(newFile);
+							int len;
+
+							while ((len = zis.read(b)) > 0) {
+								fos.write(b, 0, len);
+							}
+
+							fos.close();
+						}
+
+						ze = zis.getNextEntry();
+					}
+
+					zis.closeEntry();
+					zis.close();
+
+					Files.deleteIfExists(p);
+
+					// Downloading all the mods
+					StringBuilder sb = new StringBuilder();
+					try {
+						for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
+							sb.append(s);
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
+					JSONObject js = new JSONObject(sb.toString());
+
+					JSONArray modList = new JSONArray(js.get("files").toString());
+
+					List<Future<Boolean>> result = new ArrayList<>();
+
+					for (int x = 0; x < modList.length(); x++) {
+						JSONObject json = new JSONObject(modList.get(x).toString());
+						result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
+					}
+					int count = 0;
+					for (Future<Boolean> f : result) {
+						try {
+							if (f.get()) {
+								count++;
+							}
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						} catch (ExecutionException e) {
+							e.printStackTrace();
+						}
+					}
+
+					mpd.gui.addMessage("\nDownloaded " + count + " out of " + modList.length() + " Mods");
+
+					mpd.gui.addMessage("Finished download");
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+
 			}
+		});
 
-			fos.close();
-			System.out.println("Finished Download");
+		t.start();
+	}
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	public static Future<Boolean> downloadMod(JSONObject json, int number, int total, Path dir) {
+		return Main.ex.submit(new Callable<Boolean>() {
+			@Override
+			public Boolean call() throws Exception {
+				String url = "https://minecraft.curseforge.com/projects/" + json.get("projectID") + "/files/"
+						+ json.get("fileID");
+				mpd.gui.addMessage("\nDownloading " + (number + 1) + "/" + total + "\n" + url);
+				HttpsURLConnection conn = (HttpsURLConnection) new URL(url + "/download").openConnection();
+				String modName = conn.getHeaderField("Content-Disposition");
+				try (InputStream is = conn.getInputStream()) {
+					Files.copy(is, Paths.get(dir + "/overrides/mods/" + modName), StandardCopyOption.REPLACE_EXISTING);
+				}
+				return true;
+			}
+		});
 	}
 
 	public static void getInfo(String url) {
