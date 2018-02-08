@@ -126,7 +126,7 @@ public class DownloadUtils {
 					List<Future<Boolean>> result = new ArrayList<>();
 
 					MpdGUI.getGui().addMessage("Downloading mods...");
-					
+
 					for (int x = 0; x < modList.length(); x++) {
 						JSONObject json = new JSONObject(modList.get(x).toString());
 						result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
@@ -146,11 +146,15 @@ public class DownloadUtils {
 
 					MpdGUI.getGui().addMessage("\nDownloaded " + count + " out of " + modList.length() + " Mods");
 
+					JSONObject forgeID = new JSONObject(
+							new JSONArray(new JSONObject(js.get("minecraft").toString()).get("modLoaders").toString())
+									.get(0).toString());
+					MpdGUI.getGui().addMessage("Forge version: " + forgeID.get("id"));
+
 					MpdGUI.getGui().addMessage("Finished download");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-
 			}
 		});
 
