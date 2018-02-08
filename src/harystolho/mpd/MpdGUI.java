@@ -85,7 +85,7 @@ public class MpdGUI extends Application {
 		VBox rightBox = new VBox();
 		Button infoButton = new Button("Get Info");
 		downloadButton = new Button("Download");
-		// downloadButton.setDisable(true);
+		downloadButton.setDisable(true);
 		rightBox.setSpacing(5);
 		rightBox.setAlignment(Pos.CENTER);
 		rightBox.getChildren().addAll(infoButton, downloadButton);

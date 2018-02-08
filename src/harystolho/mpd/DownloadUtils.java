@@ -39,10 +39,10 @@ public class DownloadUtils {
 
 	public static void displayInstructions() {
 		MpdGUI.getGui().addMessage(
-				"1 - put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname') ");
-		MpdGUI.getGui().addMessage("2 - click the 'get Info' button and wait");
+				"1 - Put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname')");
+		MpdGUI.getGui().addMessage("2 - Click on the 'get Info' button and wait");
 		MpdGUI.getGui()
-				.addMessage("3 - then click on the 'download' button (download folder: /currentFolder/modpackname)");
+				.addMessage("3 - Click on the 'download' button (download folder: /currentFolder/modpackname)");
 		MpdGUI.getGui().addMessage("");
 	}
 
