@@ -9,3 +9,6 @@ Shows information about the modpack before download (name, mods quantity, versio
 
 ## Downloads
 <a href="https://github.com/Harystolho/ModpackDownloader/releases"> Download here </a>
+
+## Issues
+Report them <a href="https://github.com/Harystolho/ModpackDownloader/issues"> here </a>
