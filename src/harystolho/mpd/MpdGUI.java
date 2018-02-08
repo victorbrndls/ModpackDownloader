@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public class MpdGUI extends Application {
 
-	public static MpdGUI gui;
+	private static MpdGUI gui;
 	private Stage window;
 	private BorderPane pane;
 	private TextArea log;
@@ -50,11 +50,15 @@ public class MpdGUI extends Application {
 
 		window.setScene(scene);
 		window.show();
-		DownloadThread.addInstructions();
+		DownloadUtils.displayInstructions();
 	}
 
 	public void startGUI(String[] args) {
 		launch(args);
+	}
+
+	public static MpdGUI getGui() {
+		return gui;
 	}
 
 	private void loadPanes() {
@@ -87,11 +91,11 @@ public class MpdGUI extends Application {
 		rightBox.getChildren().addAll(infoButton, downloadButton);
 
 		infoButton.setOnAction((e) -> {
-			DownloadThread.getInfo(modpackUrl.getText());
+			DownloadUtils.getInfo(modpackUrl.getText());
 		});
 
 		downloadButton.setOnAction((e) -> {
-			DownloadThread.download(modpackUrl.getText());
+			DownloadUtils.downloadModpack(modpackUrl.getText());
 		});
 
 		HBox topBox = new HBox();

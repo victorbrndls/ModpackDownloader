@@ -30,35 +30,27 @@ import org.jsoup.HttpStatusException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-public class DownloadThread implements Runnable {
+public class DownloadUtils {
 
-	private static MpdGUI mpd;
+	private static Thread downloadThread;
 
-	public DownloadThread(MpdGUI gui) {
-		this.mpd = gui;
-	}
-
-	@Override
-	public void run() {
-
-	}
-
-	public static void addInstructions() {
-		mpd.gui.addMessage(
+	public static void displayInstructions() {
+		MpdGUI.getGui().addMessage(
 				"1 - put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname') ");
-		mpd.gui.addMessage("2 - click the 'get Info' button and wait");
-		mpd.gui.addMessage("3 - then click on the 'download' button (download folder: /currentFolder/modpackname)");
-		mpd.gui.addMessage("");
+		MpdGUI.getGui().addMessage("2 - click the 'get Info' button and wait");
+		MpdGUI.getGui()
+				.addMessage("3 - then click on the 'download' button (download folder: /currentFolder/modpackname)");
+		MpdGUI.getGui().addMessage("");
 	}
 
-	public static void download(String url) {
+	public static void downloadModpack(String url) {
 		File downloadDir = new File(url.split("projects/")[1]);
 		if (!downloadDir.exists()) {
 			System.out.println(downloadDir.getAbsolutePath());
 			downloadDir.mkdir();
 
 		}
-		Thread t = new Thread(new Runnable() {
+		downloadThread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
@@ -69,7 +61,7 @@ public class DownloadThread implements Runnable {
 							"https://minecraft.curseforge.com/projects/invasion/files/2447205/download")
 									.openConnection();
 
-					mpd.gui.addMessage("Starting download");
+					MpdGUI.getGui().addMessage("Starting download");
 
 					Path p = Paths.get(downloadDir.getPath() + "/" + MpdGUI.modpackID + ".zip");
 
@@ -77,23 +69,26 @@ public class DownloadThread implements Runnable {
 						Files.copy(in, p, StandardCopyOption.REPLACE_EXISTING);
 					}
 
-					// Unzip
+					// Unzip the configs
 					ZipInputStream zis = new ZipInputStream(new FileInputStream(p.toFile()));
 
 					ZipEntry ze = zis.getNextEntry();
 
 					byte[] b = new byte[1024];
 
+					MpdGUI.getGui().addMessage("Unziping configs");
 					while (ze != null) {
 						String fileName = ze.getName();
 						File newFile = new File(downloadDir.getPath() + "/" + fileName);
 
+						// create parent folder if it doesn't exist
 						new File(newFile.getParent()).mkdir();
 
 						if (!ze.isDirectory()) {
 							newFile.createNewFile();
 						}
 
+						// if it's a file create it, if it it's a folder skip
 						if (newFile.isFile()) {
 							FileOutputStream fos = new FileOutputStream(newFile);
 							int len;
@@ -114,6 +109,7 @@ public class DownloadThread implements Runnable {
 					Files.deleteIfExists(p);
 
 					// Downloading all the mods
+					MpdGUI.getGui().addMessage("Getting mod list");
 					StringBuilder sb = new StringBuilder();
 					try {
 						for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
@@ -129,6 +125,8 @@ public class DownloadThread implements Runnable {
 
 					List<Future<Boolean>> result = new ArrayList<>();
 
+					MpdGUI.getGui().addMessage("Downloading mods...");
+					
 					for (int x = 0; x < modList.length(); x++) {
 						JSONObject json = new JSONObject(modList.get(x).toString());
 						result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
@@ -146,9 +144,9 @@ public class DownloadThread implements Runnable {
 						}
 					}
 
-					mpd.gui.addMessage("\nDownloaded " + count + " out of " + modList.length() + " Mods");
+					MpdGUI.getGui().addMessage("\nDownloaded " + count + " out of " + modList.length() + " Mods");
 
-					mpd.gui.addMessage("Finished download");
+					MpdGUI.getGui().addMessage("Finished download");
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -156,7 +154,7 @@ public class DownloadThread implements Runnable {
 			}
 		});
 
-		t.start();
+		downloadThread.start();
 	}
 
 	public static Future<Boolean> downloadMod(JSONObject json, int number, int total, Path dir) {
@@ -165,11 +163,12 @@ public class DownloadThread implements Runnable {
 			public Boolean call() throws Exception {
 				String url = "https://minecraft.curseforge.com/projects/" + json.get("projectID") + "/files/"
 						+ json.get("fileID");
-				mpd.gui.addMessage("\nDownloading " + (number + 1) + "/" + total + "\n" + url);
+				MpdGUI.getGui().addMessage("\nDownloading " + (number + 1) + "/" + total + "\n" + url);
 				HttpsURLConnection conn = (HttpsURLConnection) new URL(url + "/download").openConnection();
-				String modName = conn.getHeaderField("Content-Disposition");
+				String modName = conn.getHeaderField("Location");
 				try (InputStream is = conn.getInputStream()) {
-					Files.copy(is, Paths.get(dir + "/overrides/mods/" + modName), StandardCopyOption.REPLACE_EXISTING);
+					Files.copy(is, Paths.get(dir + "/overrides/mods/" + json.get("projectID") + ".jar"),
+							StandardCopyOption.REPLACE_EXISTING);
 				}
 				return true;
 			}
@@ -178,7 +177,7 @@ public class DownloadThread implements Runnable {
 
 	public static void getInfo(String url) {
 
-		mpd.gui.addMessage("Modpack url: " + url);
+		MpdGUI.getGui().addMessage("Modpack url: " + url);
 
 		try {
 
@@ -205,7 +204,7 @@ public class DownloadThread implements Runnable {
 
 			String modpackName = futureName.get().select("span.overflow-tip").html();
 			if (modpackName.length() == 0) {
-				mpd.gui.addMessage("Invalid modpack name");
+				MpdGUI.getGui().addMessage("Invalid modpack name");
 				return;
 			}
 
@@ -214,17 +213,17 @@ public class DownloadThread implements Runnable {
 			String version = futureVersion.get()
 					.select("tr.project-file-list-item:nth-child(1) > td:nth-child(5) > span:nth-child(1)").text();
 
-			mpd.modpackID = futureVersion.get().select(
+			MpdGUI.modpackID = futureVersion.get().select(
 					"tr.project-file-list-item:nth-child(1) > td:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)")
 					.get(0).attr("href").split("files/")[1];
 
-			mpd.gui.setInfo(modpackName, mods, version);
+			MpdGUI.getGui().setInfo(modpackName, mods, version);
 		} catch (IllegalArgumentException e) {
-			mpd.gui.addMessage("Must supply a valid URL");
+			MpdGUI.getGui().addMessage("Must supply a valid URL");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
-			mpd.gui.addMessage("Invalid url");
+			MpdGUI.getGui().addMessage("Invalid url");
 		}
 
 	}

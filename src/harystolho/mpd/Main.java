@@ -13,9 +13,6 @@ public class Main {
 
 		MpdGUI gui = new MpdGUI();
 
-		Thread thread = new Thread(new DownloadThread(gui));
-		thread.start();
-
 		gui.startGUI(args);
 	}
 
