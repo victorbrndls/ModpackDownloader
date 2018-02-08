@@ -166,9 +166,9 @@ public class DownloadUtils {
 					MpdGUI.getGui().addMessage("Forge version: " + forgeID.get("id"));
 
 					MpdGUI.getGui().addMessage("Finished download");
-					
-					
-					
+
+					MpdGUI.getGui().addMessage("");
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

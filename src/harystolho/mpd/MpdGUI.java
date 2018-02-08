@@ -68,7 +68,7 @@ public class MpdGUI extends Application {
 		nameBox.setMinWidth(window.getWidth() * 0.87);
 		TextField modpackUrl = new TextField();
 		modpackUrl.setFocusTraversable(false);
-		modpackUrl.setText("https://minecraft.curseforge.com/projects/invasion");
+		modpackUrl.setText("https://minecraft.curseforge.com/projects/");
 		modpackUrl.setPromptText("Modpack url");
 
 		HBox modpackInfo = new HBox();
