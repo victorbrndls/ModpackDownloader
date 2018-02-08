@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
@@ -22,6 +23,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+import javax.naming.directory.DirContext;
 import javax.net.ssl.HttpsURLConnection;
 
 import org.json.JSONArray;
@@ -33,6 +35,7 @@ import org.jsoup.nodes.Document;
 public class DownloadUtils {
 
 	private static Thread downloadThread;
+	private static String modpackDownloadURL;
 
 	public static void displayInstructions() {
 		MpdGUI.getGui().addMessage(
@@ -56,12 +59,16 @@ public class DownloadUtils {
 			public void run() {
 				try {
 
+					if (modpackDownloadURL == null) {
+						MpdGUI.getGui().addMessage("Click the 'getInfo' button first");
+						return;
+					}
+
 					// Download the modpack configs
 					HttpsURLConnection conn = (HttpsURLConnection) new URL(
-							"https://minecraft.curseforge.com/projects/invasion/files/2447205/download")
-									.openConnection();
+							"https://minecraft.curseforge.com" + modpackDownloadURL + "/download").openConnection();
 
-					MpdGUI.getGui().addMessage("Starting download");
+					MpdGUI.getGui().addMessage("Starting download: " + modpackDownloadURL.split("/")[2].toUpperCase());
 
 					Path p = Paths.get(downloadDir.getPath() + "/" + MpdGUI.modpackID + ".zip");
 
@@ -110,6 +117,13 @@ public class DownloadUtils {
 
 					// Downloading all the mods
 					MpdGUI.getGui().addMessage("Getting mod list");
+
+					// make sure there is a mods folder
+					File modsFolder = new File(downloadDir + "/overrides/mods");
+					if (!modsFolder.exists()) {
+						modsFolder.mkdir();
+					}
+
 					StringBuilder sb = new StringBuilder();
 					try {
 						for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
@@ -152,6 +166,9 @@ public class DownloadUtils {
 					MpdGUI.getGui().addMessage("Forge version: " + forgeID.get("id"));
 
 					MpdGUI.getGui().addMessage("Finished download");
+					
+					
+					
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -169,10 +186,15 @@ public class DownloadUtils {
 						+ json.get("fileID");
 				MpdGUI.getGui().addMessage("\nDownloading " + (number + 1) + "/" + total + "\n" + url);
 				HttpsURLConnection conn = (HttpsURLConnection) new URL(url + "/download").openConnection();
-				String modName = conn.getHeaderField("Location");
+				System.out.println(conn.getURL());
+
 				try (InputStream is = conn.getInputStream()) {
 					Files.copy(is, Paths.get(dir + "/overrides/mods/" + json.get("projectID") + ".jar"),
 							StandardCopyOption.REPLACE_EXISTING);
+				} catch (NoSuchFileException exc) {
+					MpdGUI.getGui().addMessage("Couldn't downloader mod " + json.get("projectID"));
+				} catch (IOException ecx) {
+					MpdGUI.getGui().addMessage(ecx.getMessage());
 				}
 				return true;
 			}
@@ -211,6 +233,10 @@ public class DownloadUtils {
 				MpdGUI.getGui().addMessage("Invalid modpack name");
 				return;
 			}
+
+			modpackDownloadURL = futureName.get().select(
+					"ul.cf-recentfiles:nth-child(2) > li:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)")
+					.attr("href");
 
 			int mods = futureModNum.get();
 
