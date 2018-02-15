@@ -88,6 +88,7 @@ public class DownloadUtils {
 					try (InputStream in = conn.getInputStream()) {
 						Files.copy(in, modpackDir, StandardCopyOption.REPLACE_EXISTING);
 					}
+					conn.disconnect();
 				} catch (IOException e) {
 					MpdGUI.getGui().addMessage("Couldn't download the modpack configs.");
 				}
@@ -213,6 +214,8 @@ public class DownloadUtils {
 					MpdGUI.getGui().addMessage("Couldn't downloader mod " + json.get("projectID"));
 				} catch (IOException ecx) {
 					MpdGUI.getGui().addMessage(ecx.getMessage());
+				} finally {
+					conn.disconnect();
 				}
 				return true;
 			}
