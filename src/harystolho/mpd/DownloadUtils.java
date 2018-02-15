@@ -66,7 +66,7 @@ public class DownloadUtils {
 					Path modpackDir = Paths.get(downloadDir.getPath() + "/" + MpdGUI.modpackID + ".zip");
 
 					downloadModpackConfigs(modpackDir);
-					unZipModpackConfigs(modpackDir);
+					unZipModpackConfigs(modpackDir, downloadDir);
 
 					// Deletes the configs folder
 					Files.deleteIfExists(modpackDir);
@@ -75,65 +75,6 @@ public class DownloadUtils {
 
 				} catch (IOException e) {
 					e.printStackTrace();
-				}
-			}
-
-			private void downloadModpackConfigs(Path modpackDir) {
-				HttpsURLConnection conn;
-				try {
-					conn = (HttpsURLConnection) new URL(
-							"https://minecraft.curseforge.com" + modpackDownloadURL + "/download").openConnection();
-					MpdGUI.getGui().addMessage("Starting download: " + modpackDownloadURL.split("/")[2].toUpperCase());
-
-					try (InputStream in = conn.getInputStream()) {
-						Files.copy(in, modpackDir, StandardCopyOption.REPLACE_EXISTING);
-					}
-					conn.disconnect();
-				} catch (IOException e) {
-					MpdGUI.getGui().addMessage("Couldn't download the modpack configs.");
-				}
-
-			}
-
-			private void unZipModpackConfigs(Path modpackDir) {
-				ZipInputStream zis;
-				try {
-					byte[] b = new byte[1024];
-
-					zis = new ZipInputStream(new FileInputStream(modpackDir.toFile()));
-					ZipEntry ze = zis.getNextEntry();
-
-					MpdGUI.getGui().addMessage("Unziping configs");
-					while (ze != null) {
-						String fileName = ze.getName();
-						File newFile = new File(downloadDir.getPath() + "/" + fileName);
-
-						// create parent folder if it doesn't exist
-						new File(newFile.getParent()).mkdir();
-
-						if (!ze.isDirectory()) {
-							newFile.createNewFile();
-						}
-
-						// if it's a file create it, if it it's a folder skip
-						if (newFile.isFile()) {
-							FileOutputStream fos = new FileOutputStream(newFile);
-							int len;
-
-							while ((len = zis.read(b)) > 0) {
-								fos.write(b, 0, len);
-							}
-
-							fos.close();
-						}
-
-						ze = zis.getNextEntry();
-					}
-
-					zis.closeEntry();
-					zis.close();
-				} catch (IOException e) {
-					MpdGUI.getGui().addMessage("Couldn't unzip the modpack configs.");
 				}
 			}
 
@@ -195,6 +136,65 @@ public class DownloadUtils {
 		});
 
 		downloadThread.start();
+	}
+
+	private static void downloadModpackConfigs(Path modpackDir) {
+		HttpsURLConnection conn;
+		try {
+			conn = (HttpsURLConnection) new URL("https://minecraft.curseforge.com" + modpackDownloadURL + "/download")
+					.openConnection();
+			MpdGUI.getGui().addMessage("Starting download: " + modpackDownloadURL.split("/")[2].toUpperCase());
+
+			try (InputStream in = conn.getInputStream()) {
+				Files.copy(in, modpackDir, StandardCopyOption.REPLACE_EXISTING);
+			}
+			conn.disconnect();
+		} catch (IOException e) {
+			MpdGUI.getGui().addMessage("Couldn't download the modpack configs.");
+		}
+
+	}
+
+	private static void unZipModpackConfigs(Path modpackDir, File downloadDir) {
+		ZipInputStream zis;
+		try {
+			byte[] b = new byte[1024];
+
+			zis = new ZipInputStream(new FileInputStream(modpackDir.toFile()));
+			ZipEntry ze = zis.getNextEntry();
+
+			MpdGUI.getGui().addMessage("Unziping configs");
+			while (ze != null) {
+				String fileName = ze.getName();
+				File newFile = new File(downloadDir.getPath() + "/" + fileName);
+
+				// create parent folder if it doesn't exist
+				new File(newFile.getParent()).mkdir();
+
+				if (!ze.isDirectory()) {
+					newFile.createNewFile();
+				}
+
+				// if it's a file create it, if it it's a folder skip
+				if (newFile.isFile()) {
+					FileOutputStream fos = new FileOutputStream(newFile);
+					int len;
+
+					while ((len = zis.read(b)) > 0) {
+						fos.write(b, 0, len);
+					}
+
+					fos.close();
+				}
+
+				ze = zis.getNextEntry();
+			}
+
+			zis.closeEntry();
+			zis.close();
+		} catch (IOException e) {
+			MpdGUI.getGui().addMessage("Couldn't unzip the modpack configs.");
+		}
 	}
 
 	public static Future<Boolean> downloadMod(JSONObject json, int number, int total, Path dir) {
