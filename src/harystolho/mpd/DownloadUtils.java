@@ -2,6 +2,7 @@ package harystolho.mpd;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,8 +42,7 @@ public class DownloadUtils {
 		MpdGUI.getGui().addMessage(
 				"1 - Put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname')");
 		MpdGUI.getGui().addMessage("2 - Click on the 'get Info' button and wait");
-		MpdGUI.getGui()
-				.addMessage("3 - Click on the 'download' button (download folder: /currentFolder/modpackname)");
+		MpdGUI.getGui().addMessage("3 - Click on the 'download' button (download folder: /currentFolder/modpackname)");
 		MpdGUI.getGui().addMessage("");
 	}
 
@@ -54,7 +54,6 @@ public class DownloadUtils {
 
 		}
 		downloadThread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				try {
@@ -64,24 +63,44 @@ public class DownloadUtils {
 						return;
 					}
 
-					// Download the modpack configs
-					HttpsURLConnection conn = (HttpsURLConnection) new URL(
-							"https://minecraft.curseforge.com" + modpackDownloadURL + "/download").openConnection();
+					Path modpackDir = Paths.get(downloadDir.getPath() + "/" + MpdGUI.modpackID + ".zip");
 
+					downloadModpackConfigs(modpackDir);
+					unZipModpackConfigs(modpackDir);
+
+					// Deletes the configs folder
+					Files.deleteIfExists(modpackDir);
+
+					downloadMods(downloadDir);
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			private void downloadModpackConfigs(Path modpackDir) {
+				HttpsURLConnection conn;
+				try {
+					conn = (HttpsURLConnection) new URL(
+							"https://minecraft.curseforge.com" + modpackDownloadURL + "/download").openConnection();
 					MpdGUI.getGui().addMessage("Starting download: " + modpackDownloadURL.split("/")[2].toUpperCase());
 
-					Path p = Paths.get(downloadDir.getPath() + "/" + MpdGUI.modpackID + ".zip");
-
 					try (InputStream in = conn.getInputStream()) {
-						Files.copy(in, p, StandardCopyOption.REPLACE_EXISTING);
+						Files.copy(in, modpackDir, StandardCopyOption.REPLACE_EXISTING);
 					}
+				} catch (IOException e) {
+					MpdGUI.getGui().addMessage("Couldn't download the modpack configs.");
+				}
 
-					// Unzip the configs
-					ZipInputStream zis = new ZipInputStream(new FileInputStream(p.toFile()));
+			}
 
-					ZipEntry ze = zis.getNextEntry();
-
+			private void unZipModpackConfigs(Path modpackDir) {
+				ZipInputStream zis;
+				try {
 					byte[] b = new byte[1024];
+
+					zis = new ZipInputStream(new FileInputStream(modpackDir.toFile()));
+					ZipEntry ze = zis.getNextEntry();
 
 					MpdGUI.getGui().addMessage("Unziping configs");
 					while (ze != null) {
@@ -112,67 +131,66 @@ public class DownloadUtils {
 
 					zis.closeEntry();
 					zis.close();
+				} catch (IOException e) {
+					MpdGUI.getGui().addMessage("Couldn't unzip the modpack configs.");
+				}
+			}
 
-					Files.deleteIfExists(p);
+			private void downloadMods(File downloadDir) {
+				MpdGUI.getGui().addMessage("Getting mod list");
 
-					// Downloading all the mods
-					MpdGUI.getGui().addMessage("Getting mod list");
+				// make sure there is a mods folder
+				File modsFolder = new File(downloadDir + "/overrides/mods");
+				if (!modsFolder.exists()) {
+					modsFolder.mkdir();
+				}
 
-					// make sure there is a mods folder
-					File modsFolder = new File(downloadDir + "/overrides/mods");
-					if (!modsFolder.exists()) {
-						modsFolder.mkdir();
+				// load json file
+				StringBuilder sb = new StringBuilder();
+				try {
+					for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
+						sb.append(s);
 					}
-
-					StringBuilder sb = new StringBuilder();
-					try {
-						for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
-							sb.append(s);
-						}
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-
-					JSONObject js = new JSONObject(sb.toString());
-
-					JSONArray modList = new JSONArray(js.get("files").toString());
-
-					List<Future<Boolean>> result = new ArrayList<>();
-
-					MpdGUI.getGui().addMessage("Downloading mods...");
-
-					for (int x = 0; x < modList.length(); x++) {
-						JSONObject json = new JSONObject(modList.get(x).toString());
-						result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
-					}
-					int count = 0;
-					for (Future<Boolean> f : result) {
-						try {
-							if (f.get()) {
-								count++;
-							}
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						} catch (ExecutionException e) {
-							e.printStackTrace();
-						}
-					}
-
-					MpdGUI.getGui().addMessage("\nDownloaded " + count + " out of " + modList.length() + " Mods");
-
-					JSONObject forgeID = new JSONObject(
-							new JSONArray(new JSONObject(js.get("minecraft").toString()).get("modLoaders").toString())
-									.get(0).toString());
-					MpdGUI.getGui().addMessage("Forge version: " + forgeID.get("id"));
-
-					MpdGUI.getGui().addMessage("Finished download");
-
-					MpdGUI.getGui().addMessage("");
-
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+
+				JSONObject js = new JSONObject(sb.toString());
+
+				JSONArray modList = new JSONArray(js.get("files").toString());
+
+				List<Future<Boolean>> result = new ArrayList<>();
+
+				MpdGUI.getGui().addMessage("Downloading mods...");
+
+				for (int x = 0; x < modList.length(); x++) {
+					JSONObject json = new JSONObject(modList.get(x).toString());
+					result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
+				}
+				int count = 0;
+				for (Future<Boolean> f : result) {
+					try {
+						if (f.get()) {
+							count++;
+						}
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					} catch (ExecutionException e) {
+						e.printStackTrace();
+					}
+				}
+
+				MpdGUI.getGui().addMessage("\nDownloaded " + count + " out of " + modList.length() + " Mods");
+
+				// Display recommended forge version
+				JSONObject forgeID = new JSONObject(
+						new JSONArray(new JSONObject(js.get("minecraft").toString()).get("modLoaders").toString())
+								.get(0).toString());
+				MpdGUI.getGui().addMessage("Forge version: " + forgeID.get("id"));
+				MpdGUI.getGui().addMessage("Finished download");
+				MpdGUI.getGui().addMessage("");
 			}
+
 		});
 
 		downloadThread.start();

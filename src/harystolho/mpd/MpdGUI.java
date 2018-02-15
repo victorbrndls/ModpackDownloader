@@ -34,7 +34,7 @@ public class MpdGUI extends Application {
 
 	@Override
 	public void start(Stage window) throws Exception {
-		this.gui = this;
+		MpdGUI.gui = this;
 		this.window = window;
 		window.setTitle("Modpack Downloader");
 		window.setHeight(HEIGHT);
@@ -64,14 +64,16 @@ public class MpdGUI extends Application {
 	private void loadPanes() {
 		pane = new BorderPane();
 		pane.setPadding(new Insets(5));
+		// Modpack URL
 		VBox nameBox = new VBox();
 		nameBox.setMinWidth(window.getWidth() * 0.87);
 		TextField modpackUrl = new TextField();
 		modpackUrl.setFocusTraversable(false);
 		modpackUrl.setText("https://minecraft.curseforge.com/projects/");
 		modpackUrl.setPromptText("Modpack url");
-
+		
 		HBox modpackInfo = new HBox();
+		// Modpack name, number of mods, version
 		modpackName = new Label("Name:");
 		modpackModNumber = new Label("Mods: ");
 		modpackVersion = new Label("Version: ");
@@ -81,7 +83,8 @@ public class MpdGUI extends Application {
 
 		nameBox.setSpacing(5);
 		nameBox.getChildren().addAll(modpackUrl, modpackInfo);
-
+		
+		// Get Info and Download Buttons
 		VBox rightBox = new VBox();
 		Button infoButton = new Button("Get Info");
 		downloadButton = new Button("Download");
@@ -89,7 +92,8 @@ public class MpdGUI extends Application {
 		rightBox.setSpacing(5);
 		rightBox.setAlignment(Pos.CENTER);
 		rightBox.getChildren().addAll(infoButton, downloadButton);
-
+		
+		
 		infoButton.setOnAction((e) -> {
 			DownloadUtils.getInfo(modpackUrl.getText());
 		});
@@ -112,7 +116,7 @@ public class MpdGUI extends Application {
 
 		pane.setTop(topBox);
 		pane.setCenter(log);
-		pane.setAlignment(log, Pos.CENTER_LEFT);
+		BorderPane.setAlignment(log, Pos.CENTER_LEFT);
 
 	}
 
