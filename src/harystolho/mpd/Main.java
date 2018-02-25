@@ -28,7 +28,12 @@ public class Main {
 	private static void loadConfigs() {
 		configs = new Properties();
 		try {
-			configs.load(new FileInputStream(new File("src/harystolho/configs")));
+			configs.load(new FileInputStream(checkConfigDir()));
+			if(configs.isEmpty()) {
+				configs.put("lang", "en");
+				configs.put("downloadFolder", "/");
+				saveConfigs();
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -36,10 +41,23 @@ public class Main {
 
 	public static void saveConfigs() {
 		try {
-			Main.configs.store(new FileOutputStream(new File("src/harystolho/configs")), "");
+			Main.configs.store(new FileOutputStream(checkConfigDir()), "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static File checkConfigDir() {
+		File file = new File("configs");
+
+		if (!file.exists())
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		return file;
 	}
 
 }

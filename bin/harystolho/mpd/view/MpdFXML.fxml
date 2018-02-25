@@ -37,20 +37,20 @@
 										<Pane prefHeight="36.0" prefWidth="328.0">
 											<children>
 												<Label layoutY="10.0" text="%mpd.modpack" />
-												<Label fx:id="modpacklName" layoutX="64.0" layoutY="10.0" prefHeight="17.0" prefWidth="53.0" />
+												<Label fx:id="modpacklName" layoutX="64.0" layoutY="7.0" prefHeight="23.0" prefWidth="170.0" />
 											</children>
 										</Pane>
 										<Pane prefHeight="36.0" prefWidth="328.0">
 											<children>
 												<Label layoutY="10.0" text="%mpd.mods" />
-												<Label fx:id="modpackMods" layoutX="48.0" layoutY="10.0" prefHeight="17.0" prefWidth="49.0" />
+												<Label fx:id="modpackMods" layoutX="48.0" layoutY="10.0" prefHeight="17.0" prefWidth="98.0" />
 												<Button fx:id="selectModsButton" disable="true" layoutX="190.0" layoutY="6.0" mnemonicParsing="false" text="%mpd.selectMods" />
 											</children>
 										</Pane>
 										<Pane prefHeight="36.0" prefWidth="337.0">
 											<children>
 												<Label layoutY="10.0" text="%mpd.version" />
-												<Label fx:id="modpackVersion" layoutX="58.0" layoutY="10.0" prefHeight="17.0" prefWidth="64.0" />
+												<Label fx:id="modpackVersion" layoutX="58.0" layoutY="10.0" prefHeight="17.0" prefWidth="113.0" />
 											</children>
 										</Pane>
 									</children>
@@ -114,14 +114,14 @@
 								<ChoiceBox fx:id="languagueBox" prefWidth="150.0" />
 								<Button fx:id="downoadFolderButton" mnemonicParsing="false" text="%mpd.downloadFolder" GridPane.rowIndex="1" />
 								<Button fx:id="checkUpdatesButton" mnemonicParsing="false" text="%mpd.checkUpdate" GridPane.rowIndex="2" />
-                        <Label text="?" textFill="#838383" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Arial Bold" size="22.0" />
-                           </font>
-                           <tooltip>
-                              <Tooltip text="%mpd.folderInfo" />
-                           </tooltip>
-                        </Label>
+								<Label text="?" textFill="#838383" GridPane.columnIndex="1" GridPane.rowIndex="1">
+									<font>
+										<Font name="Arial Bold" size="22.0" />
+									</font>
+									<tooltip>
+										<Tooltip fx:id="folderToolTip" />
+									</tooltip>
+								</Label>
 							</children>
 						</GridPane>
 					</children>

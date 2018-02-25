@@ -1,5 +1,6 @@
 package harystolho.mpd.controller;
 
+import java.io.File;
 import java.util.ResourceBundle;
 
 import harystolho.mpd.DownloadUtils;
@@ -15,6 +16,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.shape.Arc;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -59,6 +61,9 @@ public class MainController {
 
 	@FXML
 	private Button checkUpdatesButton;
+
+	@FXML
+	private Tooltip folderToolTip;
 
 	// --- //
 	private DownloadUtils utils;
@@ -146,7 +151,22 @@ public class MainController {
 		downoadFolderButton.setOnAction(e -> {
 			DirectoryChooser chooser = new DirectoryChooser();
 			chooser.setTitle(loader.getResources().getString("mpd.folder"));
-			chooser.showDialog(app.getStage());
+			File downloadFolder = chooser.showDialog(app.getStage());
+			Main.configs.setProperty("downloadFolder", downloadFolder.getAbsolutePath());
+			Main.saveConfigs();
+		});
+
+		folderToolTip.setOnShowing(e -> {
+			if (Main.configs.getProperty("downloadFolder").equals("/")) {
+				folderToolTip.setText(loader.getResources().getString("mpd.folderInfo"));
+			} else {
+				folderToolTip.setText(Main.configs.getProperty("downloadFolder") + "\\"
+						+ loader.getResources().getString("mpd.modpackName"));
+			}
+		});
+
+		getInfoButton.setOnAction(e -> {
+			
 		});
 	}
 
