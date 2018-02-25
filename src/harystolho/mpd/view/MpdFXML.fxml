@@ -97,7 +97,7 @@
 				<Pane prefHeight="669.0" prefWidth="278.0" BorderPane.alignment="CENTER">
 					<children>
 						<Arc fx:id="progressArch" fill="#0892d0db" layoutX="139.0" layoutY="114.0" length="3600.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
-						<Label layoutX="73.0" layoutY="228.0" text="Download:">
+						<Label layoutX="57.0" layoutY="228.0" text="Downloaded:">
 							<font>
 								<Font name="System Bold" size="17.0" />
 							</font>
