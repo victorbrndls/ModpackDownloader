@@ -28,11 +28,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import harystolho.mpd.controller.MainController;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
 public class DownloadUtils {
 
 	private static Thread downloadThread;
-	private static String modpackDownloadURL;
+	private String modpackDownloadURL;
 
 	private MainController controller;
 
@@ -41,12 +43,14 @@ public class DownloadUtils {
 	}
 
 	public void downloadModpack(String url) {
-		File downloadDir = new File(url.split("projects/")[1]);
+		File downloadDir = new File(Main.configs.getProperty("downloadFolder") + "/" + url.split("projects/")[1]);
 		if (!downloadDir.exists()) {
 			System.out.println(downloadDir.getAbsolutePath());
 			downloadDir.mkdir();
-
 		}
+
+		System.out.println(downloadDir);
+
 		downloadThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -75,13 +79,15 @@ public class DownloadUtils {
 			private void downloadMods(File downloadDir) {
 				controller.addText("Getting mod list");
 
-				// make sure there is a mods folder
+				controller.setArchPorcentage(0);
+
+				// make sure there is a /mods/ folder
 				File modsFolder = new File(downloadDir + "/overrides/mods");
 				if (!modsFolder.exists()) {
 					modsFolder.mkdir();
 				}
 
-				// load json file
+				// load JSON file
 				StringBuilder sb = new StringBuilder();
 				try {
 					for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
@@ -97,6 +103,9 @@ public class DownloadUtils {
 
 				List<Future<Boolean>> result = new ArrayList<>();
 
+				double UniqueModPorcentage = 100.0 / modList.length();
+				double totalPorcentage = 0;
+
 				controller.addText("Downloading mods...");
 
 				for (int x = 0; x < modList.length(); x++) {
@@ -107,6 +116,9 @@ public class DownloadUtils {
 				for (Future<Boolean> f : result) {
 					try {
 						if (f.get()) {
+							totalPorcentage += UniqueModPorcentage;
+							controller.setArchPorcentage(totalPorcentage);
+							controller.setNumberPorcentage(totalPorcentage);
 							count++;
 						}
 					} catch (InterruptedException e) {
@@ -218,7 +230,7 @@ public class DownloadUtils {
 
 	public void getInfo(String url) {
 
-		controller.addText("Modpack url: " + url);
+		controller.addText(controller.getLoader().getResources().getString("mpd.modpackURL") + ": " + url);
 
 		try {
 
@@ -245,7 +257,7 @@ public class DownloadUtils {
 
 			String modpackName = futureName.get().select("span.overflow-tip").html();
 			if (modpackName.length() == 0) {
-				controller.addText("Invalid modpack name");
+				controller.addText(controller.getLoader().getResources().getString("mpd.invalidModpack"));
 				return;
 			}
 

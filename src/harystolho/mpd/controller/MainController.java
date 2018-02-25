@@ -135,6 +135,10 @@ public class MainController {
 			downloadButton.setDisable(false);
 		});
 
+		downloadButton.setOnAction(e -> {
+			utils.downloadModpack(modpackUrl.getText());
+		});
+
 		languagueBox.getSelectionModel().selectedIndexProperty().addListener((observer, oldValue, newValue) -> {
 			String lang = languageList.get(newValue.intValue());
 			switch (lang) {
@@ -174,5 +178,22 @@ public class MainController {
 		Main.configs.setProperty("lang", lang);
 		Main.saveConfigs();
 		app.getStage().setScene(app.loadLayout());
+	}
+
+	public FXMLLoader getLoader() {
+		return this.loader;
+	}
+
+	public void setArchPorcentage(double porcentage) {
+		Platform.runLater(() -> {
+			System.out.println(porcentage);
+			progressArch.setLength((porcentage / 100) * 360);
+		});
+	}
+
+	public void setNumberPorcentage(double porcentge) {
+		Platform.runLater(() -> {
+			progressNumber.setText(String.format("%.2f", porcentge) + "%");
+		});
 	}
 }
