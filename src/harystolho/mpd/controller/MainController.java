@@ -1,8 +1,13 @@
 package harystolho.mpd.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ResourceBundle;
 
 import harystolho.mpd.DownloadUtils;
+import harystolho.mpd.Main;
 import harystolho.mpd.MainApp;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -103,8 +108,21 @@ public class MainController {
 		languageList.add("Portuguese");
 
 		languagueBox.setItems(languageList);
-		languagueBox.getSelectionModel().selectFirst();
+		selectCorrectLanguage();
 
+	}
+
+	private void selectCorrectLanguage() {
+		switch (Main.configs.getProperty("lang")) {
+		case "en":
+			languagueBox.getSelectionModel().select(0);
+			break;
+		case "pt":
+			languagueBox.getSelectionModel().select(1);
+			break;
+		default:
+			break;
+		}
 	}
 
 	@FXML
@@ -118,9 +136,14 @@ public class MainController {
 			switch (lang) {
 			case "English":
 				loader.setResources(ResourceBundle.getBundle("harystolho.lang.en"));
+				Main.configs.setProperty("lang", "en");
+				Main.saveConfigs();
 				break;
 			case "Portuguese":
 				loader.setResources(ResourceBundle.getBundle("harystolho.lang.pt"));
+				Main.configs.setProperty("lang", "pt");
+				Main.saveConfigs();
+				
 				break;
 			default:
 				break;

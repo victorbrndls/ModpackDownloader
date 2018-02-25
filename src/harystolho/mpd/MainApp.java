@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
 	private Stage stage;
-	private DownloadUtils utils;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -36,7 +35,7 @@ public class MainApp extends Application {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/MpdFXML.fxml"));
-			loader.setResources(ResourceBundle.getBundle("harystolho.lang.en"));
+			loader.setResources(ResourceBundle.getBundle("harystolho.lang." + Main.configs.getProperty("lang")));
 
 			VBox box = loader.load();
 			Scene scene = new Scene(box);
