@@ -40,8 +40,6 @@ public class DownloadUtils {
 		this.controller = controller;
 	}
 
-	
-
 	public void downloadModpack(String url) {
 		File downloadDir = new File(url.split("projects/")[1]);
 		if (!downloadDir.exists()) {

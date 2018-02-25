@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Arc;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 public class MainController {
 
@@ -139,6 +141,12 @@ public class MainController {
 				break;
 			}
 
+		});
+
+		downoadFolderButton.setOnAction(e -> {
+			DirectoryChooser chooser = new DirectoryChooser();
+			chooser.setTitle(loader.getResources().getString("mpd.folder"));
+			chooser.showDialog(app.getStage());
 		});
 	}
 
