@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Arc?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="1280.0">
+         <top>
+            <HBox prefHeight="114.0" prefWidth="1280.0" style="-fx-border-color: white white black white; -fx-border-width: 0 0 2px 0;" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="106.0" prefWidth="1001.0" style="-fx-border-color: white black white black; -fx-border-width: 0 2px 0 0;">
+                     <children>
+                        <Pane prefHeight="23.0" prefWidth="1001.0" />
+                        <TextField fx:id="modpackUrl" maxWidth="449.0" prefHeight="29.0" prefWidth="449.0" promptText="%mpd.modpackURL" text="https://minecraft.curseforge.com/projects/">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </TextField>
+                        <Pane prefHeight="15.0" prefWidth="984.0" />
+                        <HBox prefHeight="36.0" prefWidth="986.0">
+                           <children>
+                              <Pane prefHeight="36.0" prefWidth="328.0">
+                                 <children>
+                                    <Label layoutY="10.0" text="%mpd.modpack" />
+                                    <Label fx:id="modpacklName" layoutX="64.0" layoutY="10.0" prefHeight="17.0" prefWidth="53.0" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="36.0" prefWidth="328.0">
+                                 <children>
+                                    <Label layoutY="10.0" text="%mpd.mods" />
+                                    <Label fx:id="modpackMods" layoutX="48.0" layoutY="10.0" prefHeight="17.0" prefWidth="49.0" />
+                                    <Button fx:id="selectModsButton" disable="true" layoutX="190.0" layoutY="6.0" mnemonicParsing="false" text="%mpd.selectMods" />
+                                 </children>
+                              </Pane>
+                              <Pane prefHeight="36.0" prefWidth="337.0">
+                                 <children>
+                                    <Label layoutY="10.0" text="%mpd.version" />
+                                    <Label fx:id="modpackVersion" layoutX="58.0" layoutY="10.0" prefHeight="17.0" prefWidth="64.0" />
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="104.0" prefWidth="277.0">
+                     <children>
+                        <Button fx:id="getInfoButton" mnemonicParsing="false" text="%mpd.getinfo">
+                           <VBox.margin>
+                              <Insets bottom="15.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="downloadButton" disable="true" mnemonicParsing="false" text="%mpd.download" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
+         <left>
+            <TextArea fx:id="MPDConsole" editable="false" prefHeight="652.0" prefWidth="972.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </TextArea>
+         </left>
+         <right>
+            <Pane prefHeight="669.0" prefWidth="278.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Arc fx:id="progressArch" fill="#575757db" layoutX="139.0" layoutY="114.0" length="3600.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
+                  <Label layoutX="73.0" layoutY="228.0" text="Download:">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="progressNumber" layoutX="172.0" layoutY="228.0" text="0%">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="39.0" layoutY="560.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="123.0" minWidth="10.0" prefWidth="121.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="79.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ChoiceBox fx:id="languagueBox" prefWidth="150.0" />
+                        <Button fx:id="downoadFolderButton" mnemonicParsing="false" text="%mpd.downloadFolder" GridPane.rowIndex="1" />
+                        <Button fx:id="checkUpdatesButton" mnemonicParsing="false" text="%mpd.checkUpdate" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </Pane>
+         </right>
+      </BorderPane>
+   </children>
+</VBox>
