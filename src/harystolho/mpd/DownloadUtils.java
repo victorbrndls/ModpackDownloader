@@ -2,12 +2,9 @@ package harystolho.mpd;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -18,13 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import javax.naming.directory.DirContext;
 import javax.net.ssl.HttpsURLConnection;
 
 import org.json.JSONArray;
@@ -46,13 +40,7 @@ public class DownloadUtils {
 		this.controller = controller;
 	}
 
-	public void displayInstructions() {
-		controller.addText(
-				"1 - Put the URL in the box (has to be a curseforge project url, 'https://minecraft.curseforge.com/projects/modpackname')");
-		controller.addText("2 - Click on the 'get Info' button and wait");
-		controller.addText("3 - Click on the 'download' button (download folder: /currentFolder/modpackname)");
-		controller.addText("");
-	}
+	
 
 	public void downloadModpack(String url) {
 		File downloadDir = new File(url.split("projects/")[1]);

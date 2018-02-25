@@ -2,8 +2,6 @@ package harystolho.mpd;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import harystolho.mpd.controller.MainController;
 import javafx.application.Application;
@@ -22,8 +20,9 @@ public class MainApp extends Application {
 		primaryStage.setTitle("ModpackDownloader");
 		primaryStage.setResizable(false);
 
-		loadLayout();
+		Scene scene = loadLayout();
 
+		stage.setScene(scene);
 		stage.show();
 	}
 
@@ -31,7 +30,7 @@ public class MainApp extends Application {
 		launch(args);
 	}
 
-	private void loadLayout() {
+	public Scene loadLayout() {
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("view/MpdFXML.fxml"));
@@ -39,15 +38,16 @@ public class MainApp extends Application {
 
 			VBox box = loader.load();
 			Scene scene = new Scene(box);
-			stage.setScene(scene);
 
 			MainController controller = loader.getController();
 			controller.setMainApp(this);
 			controller.setFXMLLoader(loader);
 
+			return scene;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return null;
 
 	}
 

@@ -1,9 +1,5 @@
 package harystolho.mpd.controller;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ResourceBundle;
 
 import harystolho.mpd.DownloadUtils;
@@ -78,7 +74,6 @@ public class MainController {
 		setupElements();
 		loadEvents();
 
-		utils.displayInstructions();
 	}
 
 	public void addText(String text) {
@@ -135,15 +130,10 @@ public class MainController {
 			String lang = languageList.get(newValue.intValue());
 			switch (lang) {
 			case "English":
-				loader.setResources(ResourceBundle.getBundle("harystolho.lang.en"));
-				Main.configs.setProperty("lang", "en");
-				Main.saveConfigs();
+				changeLangugue("en");
 				break;
 			case "Portuguese":
-				loader.setResources(ResourceBundle.getBundle("harystolho.lang.pt"));
-				Main.configs.setProperty("lang", "pt");
-				Main.saveConfigs();
-				
+				changeLangugue("pt");
 				break;
 			default:
 				break;
@@ -152,4 +142,10 @@ public class MainController {
 		});
 	}
 
+	private void changeLangugue(String lang) {
+		loader.setResources(ResourceBundle.getBundle("harystolho.lang." + lang));
+		Main.configs.setProperty("lang", lang);
+		Main.saveConfigs();
+		app.getStage().setScene(app.loadLayout());
+	}
 }

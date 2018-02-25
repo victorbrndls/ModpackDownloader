@@ -76,7 +76,7 @@
 				</HBox>
 			</top>
 			<left>
-				<TextArea fx:id="MPDConsole" editable="false" prefHeight="652.0" prefWidth="972.0" BorderPane.alignment="CENTER">
+				<TextArea fx:id="MPDConsole" editable="false" prefHeight="652.0" prefWidth="972.0" text="%mpd.tutorial" BorderPane.alignment="CENTER">
 					<BorderPane.margin>
 						<Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
 					</BorderPane.margin>
