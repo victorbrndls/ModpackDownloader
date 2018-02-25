@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import harystolho.mpd.controller.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -38,14 +39,20 @@ public class MainApp extends Application {
 			loader.setResources(ResourceBundle.getBundle("harystolho.lang.en"));
 
 			VBox box = loader.load();
-
 			Scene scene = new Scene(box);
-
 			stage.setScene(scene);
+
+			MainController controller = loader.getController();
+			controller.setMainApp(this);
+			controller.setFXMLLoader(loader);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+
+	public Stage getStage() {
+		return this.stage;
 	}
 }
