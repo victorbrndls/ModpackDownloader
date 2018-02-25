@@ -2,6 +2,8 @@ package harystolho.mpd;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +14,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
 	private Stage stage;
+	private DownloadUtils utils;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -24,7 +27,7 @@ public class MainApp extends Application {
 		stage.show();
 	}
 
-	public static void main(String[] args) {
+	public void loadGUI(String[] args) {
 		launch(args);
 	}
 

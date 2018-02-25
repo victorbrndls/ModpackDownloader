@@ -1,5 +1,7 @@
 package harystolho.mpd.controller;
 
+import harystolho.mpd.DownloadUtils;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -48,5 +50,27 @@ public class MainController {
 
 	@FXML
 	private Button checkUpdatesButton;
+
+	private DownloadUtils utils;
+
+	public String modpackID;
+
+	@FXML
+	void initialize() {
+		utils = new DownloadUtils(this);
+
+		utils.displayInstructions();
+	}
+
+	public void addText(String text) {
+		Platform.runLater(() -> {
+			this.MPDConsole.appendText(text);
+		});
+	}
+
+	public void setInfo(String modpackName, int mods, String version) {
+		// TODO Auto-generated method stub
+
+	}
 
 }
