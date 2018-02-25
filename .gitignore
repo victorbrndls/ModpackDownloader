@@ -26,4 +26,4 @@ hs_err_pid*
 /.gitattributes
 /.gitignore
 /.project
-/config
+/configs

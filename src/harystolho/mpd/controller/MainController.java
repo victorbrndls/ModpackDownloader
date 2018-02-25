@@ -131,6 +131,8 @@ public class MainController {
 	private void loadEvents() {
 		getInfoButton.setOnAction(e -> {
 			utils.getInfo(modpackUrl.getText());
+			selectModsButton.setDisable(false);
+			downloadButton.setDisable(false);
 		});
 
 		languagueBox.getSelectionModel().selectedIndexProperty().addListener((observer, oldValue, newValue) -> {
@@ -165,9 +167,6 @@ public class MainController {
 			}
 		});
 
-		getInfoButton.setOnAction(e -> {
-			
-		});
 	}
 
 	private void changeLangugue(String lang) {

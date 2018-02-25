@@ -19,77 +19,83 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="harystolho.mpd.controller.MainController">
 	<children>
-		<BorderPane prefHeight="800.0" prefWidth="1280.0">
+		<BorderPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: white;">
 			<top>
-				<HBox prefHeight="114.0" prefWidth="1280.0" style="-fx-border-color: white white black white; -fx-border-width: 0 0 2px 0;" BorderPane.alignment="CENTER">
+				<HBox prefHeight="114.0" prefWidth="1280.0" style="-fx-border-color: white white #04577c; -fx-border-width: 0 0 2px 0; -fx-background-color: #0892d0;" BorderPane.alignment="CENTER">
 					<children>
-						<VBox prefHeight="106.0" prefWidth="1001.0" style="-fx-border-color: white black white black; -fx-border-width: 0 2px 0 0;">
+						<VBox prefHeight="106.0" prefWidth="1001.0" style="-fx-border-width: 0 2px 0 0; -fx-border-color: white #04577c;">
 							<children>
 								<Pane prefHeight="23.0" prefWidth="1001.0" />
 								<TextField fx:id="modpackUrl" maxWidth="449.0" prefHeight="29.0" prefWidth="449.0" promptText="%mpd.modpackURL" text="https://minecraft.curseforge.com/projects/">
 									<font>
 										<Font size="13.0" />
 									</font>
+                           <VBox.margin>
+                              <Insets left="15.0" />
+                           </VBox.margin>
 								</TextField>
 								<Pane prefHeight="15.0" prefWidth="984.0" />
-								<HBox prefHeight="36.0" prefWidth="986.0">
+								<HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="999.0">
 									<children>
 										<Pane prefHeight="36.0" prefWidth="328.0">
 											<children>
-												<Label layoutY="10.0" text="%mpd.modpack" />
-												<Label fx:id="modpacklName" layoutX="64.0" layoutY="7.0" prefHeight="23.0" prefWidth="170.0" />
+												<Label layoutY="10.0" text="%mpd.modpack" textFill="WHITE" />
+												<Label fx:id="modpacklName" layoutX="64.0" layoutY="7.0" prefHeight="23.0" prefWidth="170.0" textFill="WHITE">
+                                       <font>
+                                          <Font name="Arial" size="12.0" />
+                                       </font></Label>
 											</children>
 										</Pane>
 										<Pane prefHeight="36.0" prefWidth="328.0">
 											<children>
-												<Label layoutY="10.0" text="%mpd.mods" />
-												<Label fx:id="modpackMods" layoutX="48.0" layoutY="10.0" prefHeight="17.0" prefWidth="98.0" />
-												<Button fx:id="selectModsButton" disable="true" layoutX="190.0" layoutY="6.0" mnemonicParsing="false" text="%mpd.selectMods" />
+												<Label layoutY="10.0" text="%mpd.mods" textFill="WHITE" />
+												<Label fx:id="modpackMods" layoutX="48.0" layoutY="10.0" prefHeight="17.0" prefWidth="98.0" textFill="WHITE" />
+												<Button fx:id="selectModsButton" disable="true" layoutX="190.0" layoutY="6.0" mnemonicParsing="false" style="-fx-background-color: white;" text="%mpd.selectMods" />
 											</children>
 										</Pane>
 										<Pane prefHeight="36.0" prefWidth="337.0">
 											<children>
-												<Label layoutY="10.0" text="%mpd.version" />
-												<Label fx:id="modpackVersion" layoutX="58.0" layoutY="10.0" prefHeight="17.0" prefWidth="113.0" />
+												<Label layoutY="10.0" text="%mpd.version" textFill="WHITE" />
+												<Label fx:id="modpackVersion" layoutX="58.0" layoutY="10.0" prefHeight="17.0" prefWidth="113.0" textFill="WHITE" />
 											</children>
 										</Pane>
 									</children>
+                           <padding>
+                              <Insets left="15.0" top="3.0" />
+                           </padding>
 								</HBox>
 							</children>
 							<HBox.margin>
 								<Insets />
 							</HBox.margin>
-							<padding>
-								<Insets left="15.0" />
-							</padding>
 						</VBox>
 						<VBox alignment="CENTER" prefHeight="104.0" prefWidth="277.0">
 							<children>
-								<Button fx:id="getInfoButton" mnemonicParsing="false" text="%mpd.getinfo">
+								<Button fx:id="getInfoButton" mnemonicParsing="false" style="-fx-background-color: white;" text="%mpd.getinfo">
 									<VBox.margin>
 										<Insets bottom="15.0" />
 									</VBox.margin>
 								</Button>
-								<Button fx:id="downloadButton" disable="true" mnemonicParsing="false" text="%mpd.download" />
+								<Button fx:id="downloadButton" disable="true" mnemonicParsing="false" style="-fx-background-color: white;" text="%mpd.download" />
 							</children>
 						</VBox>
 					</children>
 				</HBox>
 			</top>
 			<left>
-				<TextArea fx:id="MPDConsole" editable="false" prefHeight="652.0" prefWidth="972.0" text="%mpd.tutorial" BorderPane.alignment="CENTER">
+				<TextArea fx:id="MPDConsole" editable="false" prefHeight="652.0" prefWidth="972.0" stylesheets="@../main.css" text="%mpd.tutorial" BorderPane.alignment="CENTER">
 					<BorderPane.margin>
 						<Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
 					</BorderPane.margin>
 					<font>
-						<Font name="Arial" size="15.0" />
+						<Font name="Lucida Sans Unicode" size="15.0" />
 					</font>
 				</TextArea>
 			</left>
 			<right>
 				<Pane prefHeight="669.0" prefWidth="278.0" BorderPane.alignment="CENTER">
 					<children>
-						<Arc fx:id="progressArch" fill="#575757db" layoutX="139.0" layoutY="114.0" length="3600.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
+						<Arc fx:id="progressArch" fill="#0892d0db" layoutX="139.0" layoutY="114.0" length="3600.0" radiusX="100.0" radiusY="100.0" startAngle="180.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" type="ROUND" />
 						<Label layoutX="73.0" layoutY="228.0" text="Download:">
 							<font>
 								<Font name="System Bold" size="17.0" />
@@ -124,6 +130,7 @@
 								</Label>
 							</children>
 						</GridPane>
+                  <Label layoutX="248.0" layoutY="664.0" opacity="0.63" text="2.0" />
 					</children>
 				</Pane>
 			</right>
