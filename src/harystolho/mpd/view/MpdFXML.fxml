@@ -120,7 +120,7 @@
 							<children>
 								<ChoiceBox fx:id="languagueBox" prefWidth="150.0" />
 								<Button fx:id="downoadFolderButton" mnemonicParsing="false" text="%mpd.downloadFolder" GridPane.rowIndex="1" />
-								<Button fx:id="checkUpdatesButton" mnemonicParsing="false" text="%mpd.checkUpdate" GridPane.rowIndex="2" />
+								<Button fx:id="checkUpdatesButton" disable="true" mnemonicParsing="false" text="%mpd.checkUpdate" GridPane.rowIndex="2" />
 								<Label text="?" textFill="#838383" GridPane.columnIndex="1" GridPane.rowIndex="1">
 									<font>
 										<Font name="Arial Bold" size="22.0" />
@@ -131,7 +131,12 @@
 								</Label>
 							</children>
 						</GridPane>
-						<Label layoutX="248.0" layoutY="664.0" opacity="0.63" text="2.0" />
+						<Label layoutX="248.0" layoutY="664.0" opacity="0.63" text="0.2" />
+                  <Label layoutX="39.0" layoutY="663.0" text="Beta Version - Highly Instable" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
 					</children>
 				</Pane>
 			</right>
