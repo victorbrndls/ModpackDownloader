@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import harystolho.mpd.DownloadUtils;
 import harystolho.mpd.Main;
 import harystolho.mpd.MainApp;
+import harystolho.mpd.SelectModsWindow;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +21,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.shape.Arc;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class MainController {
 
@@ -108,6 +110,7 @@ public class MainController {
 	private void setupElements() {
 		languageList.add("English");
 		languageList.add("Portuguese");
+		languageList.add("Chinese");
 
 		languagueBox.setItems(languageList);
 		selectCorrectLanguage();
@@ -122,6 +125,9 @@ public class MainController {
 		case "pt":
 			languagueBox.getSelectionModel().select(1);
 			break;
+		case "zh":
+			languagueBox.getSelectionModel().select(2);
+			break;
 		default:
 			break;
 		}
@@ -131,12 +137,16 @@ public class MainController {
 	private void loadEvents() {
 		getInfoButton.setOnAction(e -> {
 			utils.getInfo(modpackUrl.getText());
-			//selectModsButton.setDisable(false);
+			selectModsButton.setDisable(false);
 			downloadButton.setDisable(false);
 		});
 
 		downloadButton.setOnAction(e -> {
 			utils.downloadModpack(modpackUrl.getText());
+		});
+
+		selectModsButton.setOnAction(e -> {
+			displaySelectModsStage();
 		});
 
 		languagueBox.getSelectionModel().selectedIndexProperty().addListener((observer, oldValue, newValue) -> {
@@ -147,6 +157,9 @@ public class MainController {
 				break;
 			case "Portuguese":
 				changeLangugue("pt");
+				break;
+			case "Chinese":
+				changeLangugue("zh");
 				break;
 			default:
 				break;
@@ -174,14 +187,23 @@ public class MainController {
 	}
 
 	private void changeLangugue(String lang) {
-		loader.setResources(ResourceBundle.getBundle("harystolho.lang." + lang));
 		Main.configs.setProperty("lang", lang);
 		Main.saveConfigs();
-		app.getStage().setScene(app.loadLayout());
+		addText(loader.getResources().getString("mpd.reloadMessage"));
+	}
+
+	private void displaySelectModsStage() {
+		addText(loader.getResources().getString("mpd.loadingMods"));
+		SelectModsWindow window = new SelectModsWindow(this);
+		window.display();
 	}
 
 	public FXMLLoader getLoader() {
 		return this.loader;
+	}
+
+	public MainApp getApp() {
+		return this.app;
 	}
 
 	public void setArchPorcentage(double porcentage) {

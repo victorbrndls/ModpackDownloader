@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="harystolho.mpd.controller.SelectModsController">
+	<children>
+		<ListView fx:id="modList" layoutX="13.0" layoutY="14.0" prefHeight="375.0" prefWidth="203.0" style="-fx-background-color: #e5e5e5; -fx-border-color: black; -fx-border-radius: 4px;" />
+		<ChoiceBox fx:id="modSeleciton" layoutX="436.0" layoutY="14.0" prefWidth="150.0" />
+		<Label layoutX="244.0" layoutY="63.0" text="%mpd.downloading">
+			<font>
+				<Font size="19.0" />
+			</font>
+		</Label>
+		<Label fx:id="modQuantityLabel" layoutX="371.0" layoutY="63.0">
+			<font>
+				<Font size="19.0" />
+			</font>
+		</Label>
+		<Label layoutX="444.0" layoutY="63.0" text="mods">
+			<font>
+				<Font size="19.0" />
+			</font>
+		</Label>
+		<Button fx:id="downloadModsButton" layoutX="482.0" layoutY="361.0" mnemonicParsing="false" text="Download Mods" />
+      <Button layoutX="233.0" layoutY="320.0" mnemonicParsing="false" text="%mpd.checkAll" />
+      <Button layoutX="233.0" layoutY="349.0" mnemonicParsing="false" text="%mpd.checkNone" />
+	</children>
+</Pane>
