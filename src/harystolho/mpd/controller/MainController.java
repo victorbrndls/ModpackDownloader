@@ -1,6 +1,8 @@
 package harystolho.mpd.controller;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
 import harystolho.mpd.DownloadUtils;
@@ -146,7 +148,7 @@ public class MainController {
 		});
 
 		selectModsButton.setOnAction(e -> {
-			displaySelectModsStage();
+			displaySelectMods();
 		});
 
 		languagueBox.getSelectionModel().selectedIndexProperty().addListener((observer, oldValue, newValue) -> {
@@ -192,10 +194,22 @@ public class MainController {
 		addText(loader.getResources().getString("mpd.reloadMessage"));
 	}
 
-	private void displaySelectModsStage() {
-		addText(loader.getResources().getString("mpd.loadingMods"));
-		SelectModsWindow window = new SelectModsWindow(this);
-		window.display();
+	private void displaySelectMods() {
+		Main.ex.execute(() -> {
+			addText(loader.getResources().getString("mpd.loadingMods"));
+			File downloadDir = utils.createDownloadDir(modpackUrl.getText());
+			Path path = Paths.get(downloadDir + "/" + modpackID + ".zip");
+			utils.downloadModpackConfigs(path);
+			utils.unZipModpackConfigs(path, downloadDir);
+
+			StringBuilder sb = utils.loadModsJSON(downloadDir);
+
+			SelectModsWindow window = new SelectModsWindow(this);
+			Platform.runLater(() -> {
+				window.display();
+			});
+		});
+
 	}
 
 	public FXMLLoader getLoader() {

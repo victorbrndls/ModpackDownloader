@@ -25,6 +25,10 @@ public class MainApp extends Application {
 
 		Scene scene = loadLayout();
 
+		primaryStage.setOnCloseRequest((e) -> {
+			Main.ex.shutdown();
+		});
+
 		stage.setScene(scene);
 		stage.show();
 	}

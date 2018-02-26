@@ -43,13 +43,15 @@ public class DownloadUtils {
 		this.controller = controller;
 	}
 
-	public void downloadModpack(String url) {
+	public File createDownloadDir(String url) {
 		File downloadDir;
 
+		url = url.split("projects/")[1];
+
 		if (Main.configs.getProperty("downloadFolder").equals("/")) {
-			downloadDir = new File(url.split("projects/")[1]);
+			downloadDir = new File(url);
 		} else {
-			downloadDir = new File(Main.configs.getProperty("downloadFolder") + "/" + url.split("projects/")[1]);
+			downloadDir = new File(Main.configs.getProperty("downloadFolder") + "/" + url);
 		}
 
 		if (!downloadDir.exists()) {
@@ -57,31 +59,41 @@ public class DownloadUtils {
 			downloadDir.mkdir();
 		}
 
+		return downloadDir;
+	}
+
+	public StringBuilder loadModsJSON(File downloadDir) {
+		StringBuilder sb = new StringBuilder();
+		try {
+			for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
+				sb.append(s);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sb;
+	}
+
+	public void downloadModpack(String url) {
+		File downloadDir = createDownloadDir(url);
+
 		System.out.println(downloadDir);
 
 		downloadThread = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				try {
 
-					if (modpackDownloadURL == null) {
-						controller.addText("Click the 'getInfo' button first");
-						return;
-					}
-
-					Path modpackDir = Paths.get(downloadDir.getPath() + "/" + controller.modpackID + ".zip");
-
-					downloadModpackConfigs(modpackDir);
-					unZipModpackConfigs(modpackDir, downloadDir);
-
-					// Deletes the configs folder
-					Files.deleteIfExists(modpackDir);
-
-					downloadMods(downloadDir);
-
-				} catch (IOException e) {
-					e.printStackTrace();
+				if (modpackDownloadURL == null) {
+					controller.addText("Click the 'getInfo' button first");
+					return;
 				}
+
+				Path modpackDir = Paths.get(downloadDir.getPath() + "/" + controller.modpackID + ".zip");
+
+				downloadModpackConfigs(modpackDir);
+				unZipModpackConfigs(modpackDir, downloadDir);
+
+				downloadMods(downloadDir);
 			}
 
 			private void downloadMods(File downloadDir) {
@@ -95,15 +107,7 @@ public class DownloadUtils {
 					modsFolder.mkdir();
 				}
 
-				// load JSON file
-				StringBuilder sb = new StringBuilder();
-				try {
-					for (String s : Files.readAllLines(Paths.get(downloadDir.getPath() + "/manifest.json"))) {
-						sb.append(s);
-					}
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				StringBuilder sb = loadModsJSON(downloadDir);
 
 				JSONObject js = new JSONObject(sb.toString());
 
@@ -152,7 +156,7 @@ public class DownloadUtils {
 		downloadThread.start();
 	}
 
-	private void downloadModpackConfigs(Path modpackDir) {
+	public void downloadModpackConfigs(Path modpackDir) {
 		HttpsURLConnection conn;
 		try {
 			conn = (HttpsURLConnection) new URL("https://minecraft.curseforge.com" + modpackDownloadURL + "/download")
@@ -169,7 +173,7 @@ public class DownloadUtils {
 
 	}
 
-	private void unZipModpackConfigs(Path modpackDir, File downloadDir) {
+	public void unZipModpackConfigs(Path modpackDir, File downloadDir) {
 		ZipInputStream zis;
 		try {
 			byte[] b = new byte[1024];
@@ -209,6 +213,13 @@ public class DownloadUtils {
 		} catch (IOException e) {
 			controller.addText("Couldn't unzip the modpack configs.");
 		}
+
+		// Deletes the configs folder
+		try {
+			Files.deleteIfExists(modpackDir);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Future<Boolean> downloadMod(JSONObject json, int number, int total, Path dir) {
@@ -236,9 +247,7 @@ public class DownloadUtils {
 	}
 
 	public void getInfo(String url) {
-
 		controller.addText(controller.getLoader().getResources().getString("mpd.modpackURL") + ": " + url);
-
 		try {
 
 			Future<Document> futureName = Main.ex.submit(new Callable<Document>() {

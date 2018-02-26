@@ -164,7 +164,7 @@
 								</Label>
 							</children>
 						</GridPane>
-						<Label layoutX="248.0" layoutY="515.0" opacity="0.63" text="0.2" />
+						<Label layoutX="248.0" layoutY="515.0" opacity="0.63" text="0.2.1" />
 						<Label layoutX="31.0" layoutY="516.0"
 							text="Beta Version - Highly Instable" textFill="RED">
 							<font>

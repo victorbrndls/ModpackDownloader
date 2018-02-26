@@ -11,7 +11,7 @@
 	<children>
 		<ListView fx:id="modList" layoutX="13.0" layoutY="14.0" prefHeight="375.0" prefWidth="203.0" style="-fx-background-color: #e5e5e5; -fx-border-color: black; -fx-border-radius: 4px;" />
 		<ChoiceBox fx:id="modSeleciton" layoutX="436.0" layoutY="14.0" prefWidth="150.0" />
-		<Label layoutX="244.0" layoutY="63.0" text="Downloading:">
+		<Label layoutX="244.0" layoutY="63.0" text="%mpd.downloading">
 			<font>
 				<Font size="19.0" />
 			</font>
