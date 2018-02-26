@@ -189,9 +189,10 @@ public class MainController {
 	}
 
 	private void changeLangugue(String lang) {
+		loader.setResources(ResourceBundle.getBundle("harystolho.lang." + lang));
 		Main.configs.setProperty("lang", lang);
 		Main.saveConfigs();
-		addText(loader.getResources().getString("mpd.reloadMessage"));
+		app.getStage().setScene(app.loadLayout());
 	}
 
 	private void displaySelectMods() {
@@ -204,6 +205,8 @@ public class MainController {
 
 			StringBuilder sb = utils.loadModsJSON(downloadDir);
 
+			
+			
 			SelectModsWindow window = new SelectModsWindow(this);
 			Platform.runLater(() -> {
 				window.display();
