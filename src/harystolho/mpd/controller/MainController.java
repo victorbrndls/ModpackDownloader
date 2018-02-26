@@ -131,7 +131,7 @@ public class MainController {
 	private void loadEvents() {
 		getInfoButton.setOnAction(e -> {
 			utils.getInfo(modpackUrl.getText());
-			selectModsButton.setDisable(false);
+			//selectModsButton.setDisable(false);
 			downloadButton.setDisable(false);
 		});
 
@@ -186,7 +186,6 @@ public class MainController {
 
 	public void setArchPorcentage(double porcentage) {
 		Platform.runLater(() -> {
-			System.out.println(porcentage);
 			progressArch.setLength((porcentage / 100) * 360);
 		});
 	}

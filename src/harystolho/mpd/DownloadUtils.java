@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -43,7 +44,14 @@ public class DownloadUtils {
 	}
 
 	public void downloadModpack(String url) {
-		File downloadDir = new File(Main.configs.getProperty("downloadFolder") + "/" + url.split("projects/")[1]);
+		File downloadDir;
+
+		if (Main.configs.getProperty("downloadFolder").equals("/")) {
+			downloadDir = new File(url.split("projects/")[1]);
+		} else {
+			downloadDir = new File(Main.configs.getProperty("downloadFolder") + "/" + url.split("projects/")[1]);
+		}
+
 		if (!downloadDir.exists()) {
 			System.out.println(downloadDir.getAbsolutePath());
 			downloadDir.mkdir();
@@ -211,7 +219,6 @@ public class DownloadUtils {
 						+ json.get("fileID");
 				controller.addText("\nDownloading " + (number + 1) + "/" + total + "\n" + url);
 				HttpsURLConnection conn = (HttpsURLConnection) new URL(url + "/download").openConnection();
-				System.out.println(conn.getURL());
 
 				try (InputStream is = conn.getInputStream()) {
 					Files.copy(is, Paths.get(dir + "/overrides/mods/" + json.get("projectID") + ".jar"),

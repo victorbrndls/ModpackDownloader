@@ -29,7 +29,7 @@ public class Main {
 		configs = new Properties();
 		try {
 			configs.load(new FileInputStream(checkConfigDir()));
-			if(configs.isEmpty()) {
+			if (configs.isEmpty()) {
 				configs.put("lang", "en");
 				configs.put("downloadFolder", "/");
 				saveConfigs();
