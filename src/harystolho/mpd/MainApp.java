@@ -17,6 +17,7 @@ public class MainApp extends Application {
 
 	private Stage stage;
 	private MainController controller;
+	private SelectModsController ModsController;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -67,12 +68,10 @@ public class MainApp extends Application {
 			loader.setResources(ResourceBundle.getBundle("harystolho.lang." + Main.configs.getProperty("lang")));
 
 			Pane pane = loader.load();
-
-			SelectModsController ModsController = loader.getController();
-			ModsController.setMainApp(this);
-			ModsController.setMainController(controller);
-
 			Scene scene = new Scene(pane);
+
+			ModsController = loader.getController();
+			ModsController.setMainController(controller);
 
 			return scene;
 		} catch (IOException e) {
@@ -84,5 +83,9 @@ public class MainApp extends Application {
 
 	public Stage getStage() {
 		return this.stage;
+	}
+
+	public SelectModsController getSelectModsController() {
+		return this.ModsController;
 	}
 }

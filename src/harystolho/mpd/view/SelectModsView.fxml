@@ -16,7 +16,7 @@
 				<Font size="19.0" />
 			</font>
 		</Label>
-		<Label fx:id="modQuantityLabel" layoutX="371.0" layoutY="63.0">
+		<Label fx:id="modQuantityLabel" layoutX="366.0" layoutY="63.0">
 			<font>
 				<Font size="19.0" />
 			</font>
@@ -27,7 +27,7 @@
 			</font>
 		</Label>
 		<Button fx:id="downloadModsButton" layoutX="482.0" layoutY="361.0" mnemonicParsing="false" text="Download Mods" />
-      <Button layoutX="233.0" layoutY="320.0" mnemonicParsing="false" text="%mpd.checkAll" />
-      <Button layoutX="233.0" layoutY="349.0" mnemonicParsing="false" text="%mpd.checkNone" />
+		<Button fx:id="checkAllButton" layoutX="233.0" layoutY="320.0" mnemonicParsing="false" text="%mpd.checkAll" />
+		<Button fx:id="checkNoneButton" layoutX="233.0" layoutY="349.0" mnemonicParsing="false" text="%mpd.checkNone" />
 	</children>
 </Pane>

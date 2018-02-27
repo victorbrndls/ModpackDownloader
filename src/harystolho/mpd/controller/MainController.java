@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import org.json.JSONArray;
@@ -228,7 +229,11 @@ public class MainController {
 				JSONObject mod;
 				for (int x = 0; x < modList.length(); x++) {
 					mod = new JSONObject(modList.get(x).toString());
-					idToModName.put(mod.getInt("projectID"), mods.get(x).text().split("(")[0]);
+					try {
+						idToModName.put(mod.getInt("projectID"), mods.get(x).text().split("\\(")[0]);
+					} catch (Exception e) {
+						System.out.println(e);
+					}
 				}
 
 			} catch (IOException e) {
@@ -241,6 +246,11 @@ public class MainController {
 
 				window.setScene(getApp().loadSelectModsScene());
 				window.show();
+
+				for (Map.Entry<Integer, String> e : idToModName.entrySet()) {
+					app.getSelectModsController().addNewMod(e.getKey(), e.getValue());
+				}
+
 			});
 		});
 
