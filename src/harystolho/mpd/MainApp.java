@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application {
 
 	private Stage stage;
+	private MainController controller;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -46,7 +47,7 @@ public class MainApp extends Application {
 			VBox box = loader.load();
 			Scene scene = new Scene(box);
 
-			MainController controller = loader.getController();
+			controller = loader.getController();
 			controller.setMainApp(this);
 			controller.setFXMLLoader(loader);
 
@@ -67,7 +68,9 @@ public class MainApp extends Application {
 
 			Pane pane = loader.load();
 
-			SelectModsController controller = loader.getController();
+			SelectModsController ModsController = loader.getController();
+			ModsController.setMainApp(this);
+			ModsController.setMainController(controller);
 
 			Scene scene = new Scene(pane);
 

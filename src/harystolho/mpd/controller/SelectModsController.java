@@ -2,6 +2,7 @@ package harystolho.mpd.controller;
 
 import java.util.HashMap;
 
+import harystolho.mpd.MainApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,6 +26,10 @@ public class SelectModsController {
 	@FXML
 	private Button downloadModsButton;
 
+	private MainApp app;
+	private MainController controller;
+	private HashMap<Integer, String> modsToDownload;
+
 	private ObservableList<CheckBox> modItemsList = FXCollections.observableArrayList();
 	private HashMap<CheckBox, Integer> checkBoxList = new HashMap<>();
 
@@ -46,6 +51,15 @@ public class SelectModsController {
 		CheckBox mod = new CheckBox(name);
 		checkBoxList.put(mod, id);
 		modItemsList.add(mod);
+	}
+
+	public void setMainApp(MainApp mainApp) {
+		this.app = mainApp;
+	}
+
+	public void setMainController(MainController controller) {
+		this.controller = controller;
+
 	}
 
 }

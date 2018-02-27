@@ -1,14 +1,22 @@
 package harystolho.mpd.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import harystolho.mpd.DownloadUtils;
 import harystolho.mpd.Main;
 import harystolho.mpd.MainApp;
-import harystolho.mpd.SelectModsWindow;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +30,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.shape.Arc;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainController {
@@ -78,6 +85,8 @@ public class MainController {
 
 	private ObservableList<String> languageList = FXCollections.observableArrayList();
 
+	private List<Integer> modsToDownload;
+
 	@FXML
 	void initialize() {
 		utils = new DownloadUtils(this);
@@ -110,6 +119,7 @@ public class MainController {
 
 	@FXML
 	private void setupElements() {
+
 		languageList.add("English");
 		languageList.add("Portuguese");
 		languageList.add("Chinese");
@@ -203,16 +213,41 @@ public class MainController {
 			utils.downloadModpackConfigs(path);
 			utils.unZipModpackConfigs(path, downloadDir);
 
-			StringBuilder sb = utils.loadModsJSON(downloadDir);
+			HashMap<Integer, String> idToModName = new HashMap<>();
 
-			
-			
-			SelectModsWindow window = new SelectModsWindow(this);
+			try {
+				StringBuilder sb = utils.loadModsJSON(downloadDir);
+
+				JSONObject json = new JSONObject(sb.toString());
+
+				JSONArray modList = new JSONArray(json.get("files").toString());
+
+				Document doc = Jsoup.parse(new File(downloadDir + "/modlist.html"), "UTF-8");
+				Elements mods = doc.getElementsByTag("a");
+
+				JSONObject mod;
+				for (int x = 0; x < modList.length(); x++) {
+					mod = new JSONObject(modList.get(x).toString());
+					idToModName.put(mod.getInt("projectID"), mods.get(x).text().split("(")[0]);
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
 			Platform.runLater(() -> {
-				window.display();
+				Stage window = new Stage();
+				window.setTitle("Select mods to download");
+
+				window.setScene(getApp().loadSelectModsScene());
+				window.show();
 			});
 		});
 
+	}
+
+	public void setModsToDownload(List<Integer> list) {
+		this.modsToDownload = list;
 	}
 
 	public FXMLLoader getLoader() {
