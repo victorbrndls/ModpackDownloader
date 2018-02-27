@@ -90,14 +90,16 @@ public class DownloadUtils {
 
 				Path modpackDir = Paths.get(downloadDir.getPath() + "/" + controller.modpackID + ".zip");
 
-				downloadModpackConfigs(modpackDir);
-				unZipModpackConfigs(modpackDir, downloadDir);
+				if (!checkIfAlreadyDownloaded(downloadDir)) {
+					downloadModpackConfigs(modpackDir);
+					unZipModpackConfigs(modpackDir, downloadDir);
+				}
 
 				downloadMods(downloadDir);
 			}
 
 			private void downloadMods(File downloadDir) {
-				controller.addText("Getting mod list");
+				controller.addText("Downloading mod list.");
 
 				controller.setArchPorcentage(0);
 
@@ -118,11 +120,22 @@ public class DownloadUtils {
 				double UniqueModPorcentage = 100.0 / modList.length();
 				double totalPorcentage = 0;
 
+				if (controller.getModsToDownload() != null) {
+					UniqueModPorcentage = 100.0 / controller.getModsToDownload().size();
+				}
+
 				controller.addText("Downloading mods...");
 
 				for (int x = 0; x < modList.length(); x++) {
 					JSONObject json = new JSONObject(modList.get(x).toString());
-					result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
+					if (controller.getModsToDownload() != null) {
+						if (controller.getModsToDownload().contains(json.get("projectID"))) {
+							result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
+						}
+					} else {
+						result.add(downloadMod(json, x, modList.length(), downloadDir.toPath()));
+					}
+
 				}
 				int count = 0;
 				for (Future<Boolean> f : result) {
@@ -140,7 +153,12 @@ public class DownloadUtils {
 					}
 				}
 
-				controller.addText("\nDownloaded " + count + " out of " + modList.length() + " Mods");
+				if (controller.getModsToDownload() != null) {
+					controller.addText(
+							"\nDownloaded " + count + " out of " + controller.getModsToDownload().size() + " Mods");
+				} else {
+					controller.addText("\nDownloaded " + count + " out of " + modList.length() + " Mods");
+				}
 
 				// Display recommended forge version
 				JSONObject forgeID = new JSONObject(
@@ -321,6 +339,16 @@ public class DownloadUtils {
 			return 0;
 		}
 		return 0;
+	}
+
+	public boolean checkIfAlreadyDownloaded(File downloadDir) {
+		File manifest = new File(downloadDir.getPath() + "/manifest.json");
+		if (manifest.exists()) {
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }

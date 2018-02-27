@@ -1,7 +1,9 @@
 package harystolho.mpd.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import harystolho.mpd.MainApp;
 import javafx.collections.FXCollections;
@@ -19,7 +21,7 @@ public class SelectModsController {
 	private ListView<CheckBox> modList;
 
 	@FXML
-	private ChoiceBox<?> modSeleciton;
+	private ChoiceBox<String> modSeleciton;
 
 	@FXML
 	private Label modQuantityLabel;
@@ -37,6 +39,7 @@ public class SelectModsController {
 	private List<Integer> modsToDownload;
 
 	private ObservableList<CheckBox> modItemsList;
+	private ObservableList<String> modOptions;
 	private HashMap<CheckBox, Integer> checkBoxList;
 
 	private int totalModNumber;
@@ -44,18 +47,27 @@ public class SelectModsController {
 
 	@FXML
 	void initialize() {
+
 		setupElements();
 		loadEvents();
 	}
 
 	private void setupElements() {
-		modItemsList = FXCollections.observableArrayList();
-		checkBoxList = new HashMap<>();
-
 		totalModNumber = 0;
 		selectModNumber = 0;
 
+		checkBoxList = new HashMap<>();
+
+		modItemsList = FXCollections.observableArrayList();
+		modOptions = FXCollections.observableArrayList();
+		modsToDownload = new ArrayList<>();
+
 		modList.setItems(modItemsList);
+
+		modOptions.add("All");
+		modOptions.add("Downloaded(TODO)");
+		modOptions.add("Not Downloaded(TODO)");
+		modSeleciton.setItems(modOptions);
 	}
 
 	private void loadEvents() {
@@ -73,6 +85,16 @@ public class SelectModsController {
 				selectModNumber = 0;
 				updateModNumber();
 			}
+		});
+
+		downloadModsButton.setOnAction((e) -> {
+			for (Map.Entry<CheckBox, Integer> mod : checkBoxList.entrySet()) {
+				if (mod.getKey().isSelected()) {
+					modsToDownload.add(mod.getValue());
+				}
+			}
+			controller.setModsToDownload(modsToDownload);
+			controller.getSelectWindow().close();
 		});
 	}
 
@@ -96,13 +118,12 @@ public class SelectModsController {
 		modItemsList.add(mod);
 	}
 
-	public void setMainController(MainController controller) {
-		this.controller = controller;
-
-	}
-
 	public void updateModNumber() {
 		modQuantityLabel.setText(selectModNumber + "/" + totalModNumber);
+	}
+
+	public void setMainController(MainController controller) {
+		this.controller = controller;
 	}
 
 }

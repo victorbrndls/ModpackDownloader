@@ -82,6 +82,8 @@ public class MainController {
 	private FXMLLoader loader;
 	private MainApp app;
 
+	private Stage selectWindow;
+
 	public String modpackID;
 
 	private ObservableList<String> languageList = FXCollections.observableArrayList();
@@ -210,9 +212,11 @@ public class MainController {
 		Main.ex.execute(() -> {
 			addText(loader.getResources().getString("mpd.loadingMods"));
 			File downloadDir = utils.createDownloadDir(modpackUrl.getText());
-			Path path = Paths.get(downloadDir + "/" + modpackID + ".zip");
-			utils.downloadModpackConfigs(path);
-			utils.unZipModpackConfigs(path, downloadDir);
+			if (!utils.checkIfAlreadyDownloaded(downloadDir)) {
+				Path path = Paths.get(downloadDir + "/" + modpackID + ".zip");
+				utils.downloadModpackConfigs(path);
+				utils.unZipModpackConfigs(path, downloadDir);
+			}
 
 			HashMap<Integer, String> idToModName = new HashMap<>();
 
@@ -241,31 +245,42 @@ public class MainController {
 			}
 
 			Platform.runLater(() -> {
-				Stage window = new Stage();
-				window.setTitle("Select mods to download");
+				selectWindow = new Stage();
+				selectWindow.setTitle("Select mods to download");
 
-				window.setScene(getApp().loadSelectModsScene());
-				window.show();
+				selectWindow.setScene(getApp().loadSelectModsScene());
+				selectWindow.show();
 
 				for (Map.Entry<Integer, String> e : idToModName.entrySet()) {
 					app.getSelectModsController().addNewMod(e.getKey(), e.getValue());
 				}
 
+				app.getSelectModsController().updateModNumber();
 			});
 		});
 
 	}
 
 	public void setModsToDownload(List<Integer> list) {
-		this.modsToDownload = list;
+		modsToDownload = list;
+		addText("");
+		addText(loader.getResources().getString("mpd.startDownload"));
+	}
+
+	public List<Integer> getModsToDownload() {
+		return modsToDownload;
 	}
 
 	public FXMLLoader getLoader() {
-		return this.loader;
+		return loader;
 	}
 
 	public MainApp getApp() {
-		return this.app;
+		return app;
+	}
+
+	public Stage getSelectWindow() {
+		return selectWindow;
 	}
 
 	public void setArchPorcentage(double porcentage) {

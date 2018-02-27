@@ -71,7 +71,7 @@ public class MainApp extends Application {
 			Scene scene = new Scene(pane);
 
 			ModsController = loader.getController();
-			ModsController.setMainController(controller);
+			ModsController.setMainController(getMainController());
 
 			return scene;
 		} catch (IOException e) {
@@ -85,7 +85,11 @@ public class MainApp extends Application {
 		return this.stage;
 	}
 
+	public MainController getMainController() {
+		return controller;
+	}
+
 	public SelectModsController getSelectModsController() {
-		return this.ModsController;
+		return ModsController;
 	}
 }
