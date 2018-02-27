@@ -1,6 +1,6 @@
 # ModpackDownloader
 
-<img src="https://i.imgur.com/HVm9I5W.png">
+<img src="https://i.imgur.com/fksk4Gb.png">
 
 ModpackDownload is a tool to download curse modpacks without needing to use the curse launcher.
 
