@@ -18,6 +18,7 @@ import org.jsoup.select.Elements;
 import harystolho.mpd.DownloadUtils;
 import harystolho.mpd.Main;
 import harystolho.mpd.MainApp;
+import harystolho.mpd.Updater;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -96,7 +97,7 @@ public class MainController {
 
 		setupElements();
 		loadEvents();
-
+		//
 	}
 
 	public void addText(String text) {
@@ -110,14 +111,6 @@ public class MainController {
 		this.modpackMods.setText(mods + "");
 		this.modpackVersion.setText(version);
 
-	}
-
-	public void setFXMLLoader(FXMLLoader loader) {
-		this.loader = loader;
-	}
-
-	public void setMainApp(MainApp app) {
-		this.app = app;
 	}
 
 	@FXML
@@ -199,6 +192,10 @@ public class MainController {
 			}
 		});
 
+		checkUpdatesButton.setOnAction((e) -> {
+			addText(loader.getResources().getString("mpd.checkUpdateMessage"));
+		});
+
 	}
 
 	private void changeLangugue(String lang) {
@@ -271,6 +268,14 @@ public class MainController {
 		return modsToDownload;
 	}
 
+	public void setFXMLLoader(FXMLLoader loader) {
+		this.loader = loader;
+	}
+
+	public void setMainApp(MainApp app) {
+		this.app = app;
+	}
+
 	public FXMLLoader getLoader() {
 		return loader;
 	}
@@ -281,6 +286,14 @@ public class MainController {
 
 	public Stage getSelectWindow() {
 		return selectWindow;
+	}
+
+	private void checkUpdates() {
+		String[] currentVersion = Main.configs.getProperty("version").split(".");
+		String[] lastVersion = Updater.checkLastVersion().split(".");
+
+		System.out.println(currentVersion[0]);
+
 	}
 
 	public void setArchPorcentage(double porcentage) {

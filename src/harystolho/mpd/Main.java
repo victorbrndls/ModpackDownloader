@@ -29,11 +29,16 @@ public class Main {
 		configs = new Properties();
 		try {
 			configs.load(new FileInputStream(checkConfigDir()));
-			if (configs.isEmpty()) {
+			if (!configs.contains("lang")) {
 				configs.put("lang", "en");
-				configs.put("downloadFolder", "/");
-				saveConfigs();
 			}
+			if (!configs.contains("downloadFolder")) {
+				configs.put("downloadFolder", "/");
+			}
+			if (!configs.contains("version")) {
+				configs.put("version", "0.2.2");
+			}
+			saveConfigs();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

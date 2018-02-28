@@ -23,7 +23,6 @@ public class MainApp extends Application {
 	public void start(Stage primaryStage) {
 		this.stage = primaryStage;
 		primaryStage.setTitle("ModpackDownloader");
-		// primaryStage.setResizable(false);
 
 		Scene scene = loadLayout();
 
