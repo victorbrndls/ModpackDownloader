@@ -7,7 +7,7 @@ ModpackDownload is a tool to download curse modpacks without needing to use the 
 ## Features
 Fast and light-weight.
 
-Beautiful UI
+Beautiful UI.
 
 Shows information about the modpack before download (name, mods quantity, version).
 
