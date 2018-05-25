@@ -18,3 +18,5 @@ You can select which mods you want to download.
 
 ## Found a bug?
 Report it <a href="https://github.com/Harystolho/ModpackDownloader/issues"> here </a>
+
+## Contributing
